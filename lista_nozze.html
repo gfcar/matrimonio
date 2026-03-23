@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tommaso & Janira</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* BODY */
+body{
+  font-family:'Montserrat',sans-serif;
+  color:#3e4e3e;
+  background:#f8f7f4;
+  line-height:1.6;
+  scroll-behavior:smooth;
+}
+
+/* MENU */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  z-index:1000;
+  font-size:.9rem;
+}
+
+nav a{
+  text-decoration:none;
+  color:#3e4e3e;
+}
+
+nav a:hover{
+  opacity:0.6;
+}
+
+/* MIRTO DECOR */
+body::after{
+  content:"";
+  position:fixed;
+  bottom:-60px;
+  right:-40px;
+  width:420px;
+  height:600px;
+  background:url("./images/mirto.png") no-repeat;
+  background-size:contain;
+  opacity:0.15;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* HERO */
+header{
+  min-height:100vh;
+  background:url("./images/villa.jpg") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+header::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+}
+
+header *{
+  position:relative;
+}
+
+header h1{
+  font-family:'Playfair Display';
+  font-size:3.5rem;
+}
+
+header p{
+  margin-top:10px;
+  letter-spacing:3px;
+}
+
+/* COUNTDOWN */
+.countdown{
+  margin-top:40px;
+  display:flex;
+  gap:40px;
+}
+
+.countdown span{
+  display:block;
+  font-size:2rem;
+}
+
+/* SEZIONI */
+section{
+  padding:120px 20px;
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h2{
+  font-family:'Playfair Display';
+  margin-bottom:20px;
+}
+
+/* FORM */
+input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+}
+
+.button{
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #3e4e3e;
+  background:transparent;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  padding:40px;
+  text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{flex-wrap:wrap}
+  header h1{font-size:2.5rem}
+  .countdown{flex-direction:column}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+<a href="#matrimonio">Il matrimonio</a>
+<a href="#rsvp">RSVP</a>
+<a href="#giornata">Giornata</a>
+<a href="#arrivare">Come arrivare</a>
+<a href="#dormire">Dove dormire</a>
+<a href="#lista">Lista nozze</a>
+<a href="#foto">Foto</a>
+<a href="#faq">FAQ</a>
+</nav>
+
+<!-- HERO -->
+<header>
+<h1>Tommaso & Janira</h1>
+<p>29 Agosto 2026</p>
+
+<div class="countdown">
+<div><span id="days"></span>Giorni</div>
+<div><span id="hours"></span>Ore</div>
+<div><span id="minutes"></span>Minuti</div>
+<div><span id="seconds"></span>Secondi</div>
+</div>
+</header>
+
+<!-- SEZIONI -->
+
+<section id="matrimonio">
+<h2>Il matrimonio</h2>
+<p>Un giorno speciale da condividere insieme a voi.</p>
+</section>
+
+<section id="giornata">
+<h2>Scansione della giornata</h2>
+<p>16:00 Cerimonia<br>18:30 Ricevimento<br>Taglio torta e festa</p>
+</section>
+
+<section id="rsvp">
+<h2>RSVP</h2>
+<form action="https://formspree.io/f/xkovnvrn" method="POST">
+<input type="text" name="nome" placeholder="Nome e Cognome" required>
+<input type="text" name="piu_uno" placeholder="Più uno">
+<button class="button">Invia</button>
+</form>
+</section>
+
+<section id="arrivare">
+<h2>Come arrivare</h2>
+<p>Villa Mosca - Alghero</p>
+<iframe src="https://www.google.com/maps?q=Villa+Mosca+Alghero&output=embed" width="100%" height="300"></iframe>
+</section>
+
+<section id="dormire">
+<h2>Dove dormire</h2>
+<p>Strutture convenzionate disponibili a breve.</p>
+</section>
+
+<section id="lista">
+<h2>Lista nozze</h2>
+<p>IBAN: IT00X000000000000</p>
+</section>
+
+<section id="foto">
+<h2>Aggiungi le tue foto</h2>
+<p>Carica qui i tuoi ricordi della giornata (puoi integrare Google Drive o altro).</p>
+</section>
+
+<section id="faq">
+<h2>FAQ</h2>
+<p>In arrivo...</p>
+</section>
+
+<footer>
+Tommaso & Janira
+</footer>
+
+<script>
+
+/* SCROLL */
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+e.target.classList.toggle('visible',e.isIntersecting);
+});
+});
+sections.forEach(s=>observer.observe(s));
+
+/* COUNTDOWN */
+const weddingDate=new Date("August 29, 2026 16:00:00").getTime();
+
+setInterval(()=>{
+const now=new Date().getTime();
+const d=weddingDate-now;
+
+document.getElementById("days").innerText=Math.floor(d/(1000*60*60*24));
+document.getElementById("hours").innerText=Math.floor((d/(1000*60*60))%24);
+document.getElementById("minutes").innerText=Math.floor((d/(1000*60))%60);
+document.getElementById("seconds").innerText=Math.floor((d/1000)%60);
+},1000);
+
+</script>
+
+</body>
+</html>
