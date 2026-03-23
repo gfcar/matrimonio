@@ -45,7 +45,7 @@ nav a:hover{
   opacity:0.6;
 }
 
-/* MIRTO DECOR */
+/* MIRTO */
 body::after{
   content:"";
   position:fixed;
@@ -95,16 +95,23 @@ header p{
   letter-spacing:3px;
 }
 
-/* COUNTDOWN */
+/* COUNTDOWN ORIZZONTALE */
 .countdown{
   margin-top:40px;
   display:flex;
-  gap:40px;
+  gap:30px;
+  flex-wrap:nowrap;
+  justify-content:center;
+}
+
+.countdown div{
+  text-align:center;
 }
 
 .countdown span{
   display:block;
-  font-size:2rem;
+  font-size:2.2rem;
+  font-weight:500;
 }
 
 /* SEZIONI */
@@ -154,7 +161,14 @@ footer{
 @media(max-width:768px){
   nav{flex-wrap:wrap}
   header h1{font-size:2.5rem}
-  .countdown{flex-direction:column}
+
+  .countdown{
+    gap:15px;
+  }
+
+  .countdown span{
+    font-size:1.5rem;
+  }
 }
 
 </style>
@@ -162,7 +176,6 @@ footer{
 
 <body>
 
-<!-- MENU -->
 <nav>
 <a href="#matrimonio">Il matrimonio</a>
 <a href="#rsvp">RSVP</a>
@@ -174,8 +187,8 @@ footer{
 <a href="#faq">FAQ</a>
 </nav>
 
-<!-- HERO -->
 <header>
+
 <h1>Tommaso & Janira</h1>
 <p>29 Agosto 2026</p>
 
@@ -185,9 +198,8 @@ footer{
 <div><span id="minutes"></span>Minuti</div>
 <div><span id="seconds"></span>Secondi</div>
 </div>
-</header>
 
-<!-- SEZIONI -->
+</header>
 
 <section id="matrimonio">
 <h2>Il matrimonio</h2>
@@ -226,7 +238,7 @@ footer{
 
 <section id="foto">
 <h2>Aggiungi le tue foto</h2>
-<p>Carica qui i tuoi ricordi della giornata (puoi integrare Google Drive o altro).</p>
+<p>Carica qui i tuoi ricordi della giornata.</p>
 </section>
 
 <section id="faq">
@@ -240,7 +252,6 @@ Tommaso & Janira
 
 <script>
 
-/* SCROLL */
 const sections=document.querySelectorAll('section');
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
@@ -249,7 +260,6 @@ e.target.classList.toggle('visible',e.isIntersecting);
 });
 sections.forEach(s=>observer.observe(s));
 
-/* COUNTDOWN */
 const weddingDate=new Date("August 29, 2026 16:00:00").getTime();
 
 setInterval(()=>{
