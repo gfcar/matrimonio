@@ -15,160 +15,216 @@
 /* BODY */
 body{
   font-family:'Montserrat',sans-serif;
-  color:#3e4e3e;
-  background:#f8f7f4;
+  color:#243024;
+  background:#f7f9f7;
   line-height:1.6;
   scroll-behavior:smooth;
 }
 
-/* MENU */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter:blur(10px);
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:15px;
-  z-index:1000;
-  font-size:.9rem;
-}
-
-nav a{
-  text-decoration:none;
-  color:#3e4e3e;
-}
-
-nav a:hover{
-  opacity:0.6;
-}
-
-/* MIRTO */
+/* DECORAZIONE MIRTO */
 body::after{
   content:"";
   position:fixed;
-  bottom:-60px;
-  right:-40px;
-  width:420px;
-  height:600px;
-  background:url("./images/mirto.png") no-repeat;
+  bottom:-40px;
+  right:-20px;
+  width:260px;
+  height:380px;
+  background:url("./images/mirto2.png") no-repeat;
   background-size:contain;
   opacity:0.15;
   pointer-events:none;
   z-index:-1;
 }
 
-/* HERO */
+/* --- NUOVO MENU MOBILE FIRST --- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(247, 249, 247, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(163, 177, 138, 0.1);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display';
+  font-size: 1.2rem;
+  color: #243024;
+  text-decoration: none;
+}
+
+/* Tasto Hamburger */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background: #bc8a7a;
+  transition: 0.3s;
+}
+
+/* Pannello Menu Mobile */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: #f7f9f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 2050;
+}
+
+.nav-menu.active {
+  right: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #243024;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+/* Animazione Hamburger in "X" */
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- HERO E SEZIONI --- */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 66.7vw; 
+  max-height: 80vh; 
+  margin-top: 60px;
+  background: url("./images/villa.png") center/cover no-repeat;
+}
+
+.hero-image-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; 
+  background: linear-gradient(to bottom, transparent, #f7f9f7);
+}
+
 header{
-  min-height:100vh;
-  background:url("./images/villa.jpg") center/cover no-repeat;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  color:white;
-  position:relative;
+  padding:20px 20px 80px;
 }
 
-header::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.3);
-}
+header h1{ font-family:'Playfair Display'; font-size:2.8rem; color: #243024; }
+header p{ margin-top:10px; letter-spacing:4px; font-size:.8rem; color: #a3b18a; }
 
-header *{
-  position:relative;
-}
+.countdown{ margin-top:40px; display:flex; gap:15px; }
+.countdown div{ text-align:center; font-size: .65rem; color: #bc8a7a; text-transform: uppercase; }
+.countdown span{ display:block; font-size:1.8rem; font-family: 'Playfair Display'; color: #243024; }
 
-header h1{
-  font-family:'Playfair Display';
-  font-size:3.5rem;
-}
-
-header p{
-  margin-top:10px;
-  letter-spacing:3px;
-}
-
-/* COUNTDOWN ORIZZONTALE */
-.countdown{
-  margin-top:40px;
-  display:flex;
-  gap:30px;
-  flex-wrap:nowrap;
-  justify-content:center;
-}
-
-.countdown div{
-  text-align:center;
-}
-
-.countdown span{
-  display:block;
-  font-size:2.2rem;
-  font-weight:500;
-}
-
-/* SEZIONI */
 section{
-  padding:120px 20px;
-  max-width:900px;
-  margin:auto;
+  padding:90px 25px;
+  max-width:750px;
+  margin:40px auto;
   text-align:center;
-
+  background: rgba(255, 255, 255, 0.45); 
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px);
+  border-radius:15px;
   opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
+  transform:translateY(30px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-section.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+section.visible{ opacity:1; transform:translateY(0); }
 
-h2{
-  font-family:'Playfair Display';
-  margin-bottom:20px;
-}
-
-/* FORM */
-input{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-}
+h2{ font-family:'Playfair Display'; font-size:2rem; margin-bottom:25px; color: #243024; }
+h2::after{ content:""; width:40px; height:1px; background:#bc8a7a; display:block; margin:15px auto 0; }
 
 .button{
-  margin-top:10px;
-  padding:10px;
-  border:1px solid #3e4e3e;
+  margin-top:20px;
+  padding:14px 40px;
+  border: 1px solid #bc8a7a;
   background:transparent;
+  color: #bc8a7a;
   cursor:pointer;
+  transition: all 0.4s;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.75rem;
 }
 
-/* FOOTER */
-footer{
-  padding:40px;
-  text-align:center;
-}
+.button:hover{ background: #bc8a7a; color: #ffffff; }
 
-/* MOBILE */
-@media(max-width:768px){
-  nav{flex-wrap:wrap}
-  header h1{font-size:2.5rem}
+iframe{ width:100%; height:350px; border:0; margin-top:30px; border-radius:4px; filter: sepia(0.2) contrast(0.9); }
 
-  .countdown{
-    gap:15px;
+footer{ margin-top:100px; padding:60px; text-align:center; font-size:.7rem; color: #a3b18a; text-transform: uppercase; }
+
+/* DESKTOP STYLES */
+@media(min-width: 768px) {
+  .menu-toggle { display: none; }
+  
+  .nav-menu {
+    position: static;
+    height: auto;
+    width: auto;
+    background: transparent;
+    flex-direction: row;
+    gap: 30px;
+    right: 0;
   }
 
-  .countdown span{
-    font-size:1.5rem;
+  .nav-menu a {
+    font-size: 0.75rem;
+    position: relative;
+    padding-bottom: 4px;
   }
+
+  .nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #bc8a7a;
+    transition: width 0.3s ease;
+  }
+
+  .nav-menu a:hover::after { width: 100%; }
+
+  header h1{ font-size:4.2rem; }
+  .countdown{ gap:60px; }
+  .countdown span{ font-size:3rem; }
+  section{ max-width:850px; padding:110px 60px; }
+  .hero-image-container { height: 45vw; max-height: 650px; }
 }
 
 </style>
@@ -177,101 +233,103 @@ footer{
 <body>
 
 <nav>
-<a href="#matrimonio">Il matrimonio</a>
-<a href="#rsvp">RSVP</a>
-<a href="#giornata">Giornata</a>
-<a href="#arrivare">Come arrivare</a>
-<a href="#dormire">Dove dormire</a>
-<a href="#lista">Lista nozze</a>
-<a href="#foto">Foto</a>
-<a href="#faq">FAQ</a>
+  <a href="#" class="nav-logo">T & J</a>
+  
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-menu" id="nav-links">
+    <a href="#programma">Programma</a>
+    <a href="#arrivare">Dove</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#dormire">Dormire</a>
+    <a href="#lista">Regalo</a>
+    <a href="#foto">Foto</a>
+    <a href="#faq">FAQ</a>
+  </div>
 </nav>
 
+<div class="hero-image-container"></div>
+
 <header>
+  <h1>Tommaso & Janira</h1>
+  <p>29 AGOSTO 2026 • ALGHERO</p>
 
-<h1>Tommaso & Janira</h1>
-<p>29 Agosto 2026</p>
-
-<div class="countdown">
-<div><span id="days"></span>Giorni</div>
-<div><span id="hours"></span>Ore</div>
-<div><span id="minutes"></span>Minuti</div>
-<div><span id="seconds"></span>Secondi</div>
-</div>
-
+  <div class="countdown">
+    <div><span id="days"></span>Giorni</div>
+    <div><span id="hours"></span>Ore</div>
+    <div><span id="minutes"></span>Minuti</div>
+    <div><span id="seconds"></span>Secondi</div>
+  </div>
 </header>
 
-<section id="matrimonio">
-<h2>Il matrimonio</h2>
-<p>Un giorno speciale da condividere insieme a voi.</p>
-</section>
-
-<section id="giornata">
-<h2>Scansione della giornata</h2>
-<p>16:00 Cerimonia<br>18:30 Ricevimento<br>Taglio torta e festa</p>
-</section>
-
-<section id="rsvp">
-<h2>RSVP</h2>
-<form action="https://formspree.io/f/xkovnvrn" method="POST">
-<input type="text" name="nome" placeholder="Nome e Cognome" required>
-<input type="text" name="piu_uno" placeholder="Più uno">
-<button class="button">Invia</button>
-</form>
+<section id="programma">
+  <h2>Programma</h2>
+  <p><strong>Ore 16:00</strong> — Cerimonia presso la Chiesa di San Francesco</p>
+  <p><strong>Ore 18:30</strong> — Aperitivo e Ricevimento a Villa Mosca</p>
 </section>
 
 <section id="arrivare">
-<h2>Come arrivare</h2>
-<p>Villa Mosca - Alghero</p>
-<iframe src="https://www.google.com/maps?q=Villa+Mosca+Alghero&output=embed" width="100%" height="300"></iframe>
+  <h2>Come arrivare</h2>
+  <p>Villa Mosca - Lungomare Dante, Alghero</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.3846618765276!2d8.315059876569107!3d40.55519197141755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d933391d17d09b%3A0xc3b5444e9766468e!2sVilla%20Mosca!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"></iframe>
 </section>
 
-<section id="dormire">
-<h2>Dove dormire</h2>
-<p>Strutture convenzionate disponibili a breve.</p>
-</section>
-
-<section id="lista">
-<h2>Lista nozze</h2>
-<p>IBAN: IT00X000000000000</p>
-</section>
-
-<section id="foto">
-<h2>Aggiungi le tue foto</h2>
-<p>Carica qui i tuoi ricordi della giornata.</p>
-</section>
-
-<section id="faq">
-<h2>FAQ</h2>
-<p>In arrivo...</p>
+<section id="rsvp">
+  <h2>Conferma partecipazione</h2>
+  <form action="https://formspree.io/f/xkovnvrn" method="POST">
+    <input type="text" name="nome" placeholder="Nome e Cognome" required style="width:100%; padding:14px; margin:10px 0; border: 1px solid rgba(163,177,138,0.2); border-radius:4px;">
+    <button class="button">Invia Conferma</button>
+  </form>
 </section>
 
 <footer>
-Tommaso & Janira
+  Tommaso & Janira — 29.08.2026
 </footer>
 
 <script>
+/* LOGICA MENU MOBILE */
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+const links = document.querySelectorAll('.nav-menu a');
 
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('open');
+  navLinks.classList.toggle('active');
+});
+
+// Chiude il menu quando si clicca su un link
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('open');
+    navLinks.classList.remove('active');
+  });
+});
+
+/* ANIMAZIONI SCROLL */
 const sections=document.querySelectorAll('section');
 const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-e.target.classList.toggle('visible',e.isIntersecting);
-});
-});
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.1});
 sections.forEach(s=>observer.observe(s));
 
+/* COUNTDOWN */
 const weddingDate=new Date("August 29, 2026 16:00:00").getTime();
-
 setInterval(()=>{
-const now=new Date().getTime();
-const d=weddingDate-now;
-
-document.getElementById("days").innerText=Math.floor(d/(1000*60*60*24));
-document.getElementById("hours").innerText=Math.floor((d/(1000*60*60))%24);
-document.getElementById("minutes").innerText=Math.floor((d/(1000*60))%60);
-document.getElementById("seconds").innerText=Math.floor((d/1000)%60);
+  const now=new Date().getTime();
+  const d=weddingDate-now;
+  if(d > 0) {
+    document.getElementById("days").innerText=Math.floor(d/(1000*60*60*24));
+    document.getElementById("hours").innerText=Math.floor((d/(1000*60*60))%24);
+    document.getElementById("minutes").innerText=Math.floor((d/(1000*60))%60);
+    document.getElementById("seconds").innerText=Math.floor((d/1000)%60);
+  }
 },1000);
-
 </script>
 
 </body>
