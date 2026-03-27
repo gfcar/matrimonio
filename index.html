@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tommaso & Janira</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap"
+        rel="stylesheet">
 
     <style>
         /* RESET */
-        *{margin:0;padding:0;box-sizing:border-box}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
 
         /* BODY */
         body {
             font-family: 'Montserrat', sans-serif;
-            color: #2d3a2d; /* Verde mirto scuro profondo */
+            color: #2d3a2d;
+            /* Verde mirto scuro profondo */
             background: #f7f9f7;
             line-height: 1.8;
             scroll-behavior: smooth;
@@ -48,7 +56,8 @@
             z-index: 2000;
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Hamburger a destra */
+            justify-content: flex-end;
+            /* Hamburger a destra */
             padding: 0 25px;
             border-bottom: 1px solid rgba(163, 177, 138, 0.1);
         }
@@ -95,7 +104,9 @@
             z-index: 2050;
         }
 
-        .nav-menu.active { right: 0; }
+        .nav-menu.active {
+            right: 0;
+        }
 
         .nav-menu a {
             text-decoration: none;
@@ -106,16 +117,24 @@
             font-weight: 300;
         }
 
-        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
 
         /* HERO IMAGE */
         .hero-image-container {
             position: relative;
             width: 100%;
-            height: 66.7vw; 
-            max-height: 80vh; 
+            height: 66.7vw;
+            max-height: 80vh;
             margin-top: 70px;
             background: url("./images/villa.png") center/cover no-repeat;
         }
@@ -126,7 +145,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 40%; 
+            height: 40%;
             background: linear-gradient(to bottom, transparent, #f7f9f7);
         }
 
@@ -176,22 +195,40 @@
             letter-spacing: 2px;
         }
 
-        /* SEZIONI */
         section {
             padding: 100px 25px;
             max-width: 800px;
             margin: 40px auto;
             text-align: center;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(15px);
-            border-radius: 2px; /* Angoli netti più eleganti */
+
+            /* PIÙ TRASPARENZA */
+            background: rgba(241, 244, 235, 0.6);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            /* RIMUOVIAMO IL BORDO DURO */
+            border: none;
+
+            /* LEGGERA PROFONDITÀ */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+
+            /* SFUMATURA AI BORDI */
+            -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+            mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+
             opacity: 0;
             transform: translateY(30px);
             transition: all 1.2s ease-out;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+
+            position: relative;
+            z-index: 1;
         }
 
-        section.visible { opacity: 1; transform: translateY(0); }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
@@ -224,7 +261,10 @@
             font-size: 0.7rem;
         }
 
-        .button:hover { background: #bc8a7a; color: #ffffff; }
+        .button:hover {
+            background: #bc8a7a;
+            color: #ffffff;
+        }
 
         iframe {
             width: 100%;
@@ -247,7 +287,10 @@
 
         /* DESKTOP STYLES */
         @media(min-width: 768px) {
-            nav { justify-content: space-between; padding: 0 40px; }
+            nav {
+                justify-content: space-between;
+                padding: 0 40px;
+            }
 
             .nav-logo {
                 position: static;
@@ -256,7 +299,9 @@
                 font-size: 1.8rem;
             }
 
-            .menu-toggle { display: none; }
+            .menu-toggle {
+                display: none;
+            }
 
             .nav-menu {
                 position: static;
@@ -267,116 +312,134 @@
                 gap: 35px;
             }
 
-            .nav-menu a { font-size: 0.7rem; letter-spacing: 3px; }
+            .nav-menu a {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+            }
 
-            header h1 { font-size: 5rem; }
-            .countdown { gap: 60px; }
-            .countdown span { font-size: 3.5rem; }
-            section { max-width: 850px; padding: 120px 80px; }
+            header h1 {
+                font-size: 5rem;
+            }
+
+            .countdown {
+                gap: 60px;
+            }
+
+            .countdown span {
+                font-size: 3.5rem;
+            }
+
+            section {
+                max-width: 850px;
+                padding: 120px 80px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="#" class="nav-logo">T & J</a>
-    
-    <div class="menu-toggle" id="mobile-menu">
-        <span></span><span></span><span></span>
-    </div>
+    <nav>
+        <a href="#" class="nav-logo">T & J</a>
 
-    <div class="nav-menu" id="nav-links">
-        <a href="#programma">Programma</a>
-        <a href="#arrivare">Dove</a>
-        <a href="#rsvp">RSVP</a>
-        <a href="#dormire">Dormire</a>
-        <a href="#lista">Regalo</a>
-        <a href="#foto">Foto</a>
-        <a href="#faq">FAQ</a>
-    </div>
-</nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
 
-<div class="hero-image-container"></div>
+        <div class="nav-menu" id="nav-links">
+            <a href="#programma">Programma</a>
+            <a href="#arrivare">Dove</a>
+            <a href="#rsvp">RSVP</a>
+            <a href="#dormire">Dormire</a>
+            <a href="#lista">Regalo</a>
+            <a href="#foto">Foto</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
 
-<header>
-    <h1>Tommaso & Janira</h1>
-    <p>29 Agosto 2026 • Alghero</p>
+    <div class="hero-image-container"></div>
 
-    <div class="countdown">
-        <div><span id="days"></span>Giorni</div>
-        <div><span id="hours"></span>Ore</div>
-        <div><span id="minutes"></span>Minuti</div>
-        <div><span id="seconds"></span>Secondi</div>
-    </div>
-</header>
+    <header>
+        <h1>Tommaso & Janira</h1>
+        <p>29 Agosto 2026 • Alghero</p>
 
-<section id="programma">
-    <h2>Programma</h2>
-    <p><strong>Ore 16:00</strong> — Cerimonia presso la Chiesa di San Francesco</p>
-    <p><strong>Ore 18:30</strong> — Aperitivo e Ricevimento a Villa Mosca</p>
-</section>
+        <div class="countdown">
+            <div><span id="days"></span>Giorni</div>
+            <div><span id="hours"></span>Ore</div>
+            <div><span id="minutes"></span>Minuti</div>
+            <div><span id="seconds"></span>Secondi</div>
+        </div>
+    </header>
 
-<section id="arrivare">
-    <h2>Come arrivare</h2>
-    <p>Villa Mosca - Lungomare Dante, Alghero</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"></iframe>
-</section>
+    <section id="programma">
+        <h2>Programma</h2>
+        <p><strong>Ore 16:00</strong> — Cerimonia presso la Chiesa di San Francesco</p>
+        <p><strong>Ore 18:30</strong> — Aperitivo e Ricevimento a Villa Mosca</p>
+    </section>
 
-<section id="rsvp">
-    <h2>RSVP</h2>
-    <p>Vi preghiamo di confermare la vostra partecipazione</p>
-    <form action="https://formspree.io/f/xkovnvrn" method="POST">
-        <input type="text" name="nome" placeholder="Nome e Cognome" required style="width:100%; padding:15px; margin:20px 0 10px; border:1px solid rgba(163,177,138,0.3); font-family:inherit;">
-        <button class="button">Conferma ora</button>
-    </form>
-</section>
+    <section id="arrivare">
+        <h2>Come arrivare</h2>
+        <p>Villa Mosca - Lungomare Dante, Alghero</p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"></iframe>
+    </section>
 
-<footer>
-    Tommaso & Janira — 29.08.2026
-</footer>
+    <section id="rsvp">
+        <h2>RSVP</h2>
+        <p>Vi preghiamo di confermare la vostra partecipazione</p>
+        <form action="https://formspree.io/f/xkovnvrn" method="POST">
+            <input type="text" name="nome" placeholder="Nome e Cognome" required
+                style="width:100%; padding:15px; margin:20px 0 10px; border:1px solid rgba(163,177,138,0.3); font-family:inherit;">
+            <button class="button">Conferma ora</button>
+        </form>
+    </section>
 
-<script>
-    /* LOGICA MENU MOBILE */
-    const menuToggle = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
-    const links = document.querySelectorAll('.nav-menu a');
+    <footer>
+        Tommaso & Janira — 29.08.2026
+    </footer>
 
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('open');
-        navLinks.classList.toggle('active');
-    });
+    <script>
+        /* LOGICA MENU MOBILE */
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const links = document.querySelectorAll('.nav-menu a');
 
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('open');
-            navLinks.classList.remove('active');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            navLinks.classList.toggle('active');
         });
-    });
 
-    /* ANIMAZIONI SCROLL */
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if(e.isIntersecting) e.target.classList.add('visible');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('open');
+                navLinks.classList.remove('active');
+            });
         });
-    }, { threshold: 0.1 });
 
-    sections.forEach(s => observer.observe(s));
+        /* ANIMAZIONI SCROLL */
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
 
-    /* COUNTDOWN */
-    const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const d = weddingDate - now;
-        if(d > 0) {
-            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
-            document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
-            document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
-        }
-    }, 1000);
-</script>
+        sections.forEach(s => observer.observe(s));
+
+        /* COUNTDOWN */
+        const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = weddingDate - now;
+            if (d > 0) {
+                document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
+                document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
+                document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
+            }
+        }, 1000);
+    </script>
 
 </body>
+
 </html>
