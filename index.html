@@ -6,31 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tommaso & Janira</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap"
-        rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
+        :root {
+            --gold:       #c9a96e;
+            --gold-rgb:   201, 169, 110;
+            --green-dark: #243024;
+            --green-mid:  #a3b18a;
+            --green-rgb:  163, 177, 138;
+            --sand:       #c8b89a;
+            --sand-rgb:   200, 184, 154;
+            --bg:         #f4f4f0;
+            --text:       #2d3a2d;
         }
 
-        /* BODY */
+        * { margin: 0; padding: 0; box-sizing: border-box }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            color: #2d3a2d;
-            background: #f4f4f0;
+            color: var(--text);
+            background: var(--bg);
             line-height: 1.8;
             scroll-behavior: smooth;
             font-weight: 300;
         }
 
-        /* DECORAZIONE MIRTO */
         body::after {
             content: "";
             position: fixed;
@@ -45,7 +46,7 @@
             z-index: -1;
         }
 
-        /* MENU NAVIGAZIONE */
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -59,18 +60,19 @@
             align-items: center;
             justify-content: flex-end;
             padding: 0 25px;
-            border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+            border-bottom: 1px solid rgba(var(--gold-rgb), 0.12);
         }
 
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            color: #243024;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--green-dark);
             text-decoration: none;
             position: absolute;
             left: 12%;
             transform: translateX(-50%);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .menu-toggle {
@@ -84,7 +86,7 @@
         .menu-toggle span {
             width: 22px;
             height: 1px;
-            background: #a3b18a;
+            background: var(--green-mid);
             transition: 0.3s;
         }
 
@@ -94,7 +96,7 @@
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: #f4f4f0;
+            background: var(--bg);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -104,13 +106,11 @@
             z-index: 2050;
         }
 
-        .nav-menu.active {
-            right: 0;
-        }
+        .nav-menu.active { right: 0; }
 
         .nav-menu a {
             text-decoration: none;
-            color: #243024;
+            color: var(--green-dark);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -118,23 +118,13 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover {
-            color: var(--sand);
-        }
+        .nav-menu a:hover { color: var(--sand); }
 
-        .menu-toggle.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
+        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        /* HERO IMAGE */
+        /* HERO PARALLAX */
         .hero-image-container {
             position: relative;
             width: 100%;
@@ -142,6 +132,7 @@
             max-height: 80vh;
             margin-top: 70px;
             background: url("./images/villa.png") center/cover no-repeat;
+            background-attachment: fixed;
         }
 
         .hero-image-container::after {
@@ -151,7 +142,45 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(to bottom, transparent, #f4f4f0);
+            background: linear-gradient(to bottom, transparent, var(--bg));
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.65;
+            transition: opacity 0.5s;
+            animation: scrollBounce 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+        }
+
+        .scroll-indicator::after {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-right: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            transform: rotate(45deg) translateY(-3px);
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0);  opacity: 0.5; }
+            50%       { transform: translateX(-50%) translateY(7px); opacity: 0.9; }
         }
 
         /* HEADER */
@@ -164,7 +193,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 3rem;
             font-weight: 400;
-            color: #243024;
+            color: var(--green-dark);
             line-height: 1.2;
         }
 
@@ -172,40 +201,43 @@
             margin-top: 10px;
             letter-spacing: 5px;
             font-size: .75rem;
-            color: #c9a96e;
+            color: var(--gold);
             text-transform: uppercase;
         }
 
-        /* COUNTDOWN */
+        /* COUNTDOWN CARDS */
         .countdown {
             margin-top: 50px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 12px;
         }
 
-        .countdown span {
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(var(--sand-rgb), 0.15);
+            border: 1px solid rgba(var(--sand-rgb), 0.38);
+            border-radius: 4px;
+            padding: 16px 18px 12px;
+            min-width: 66px;
+        }
+
+        .countdown-item span {
             display: block;
             font-size: 2.2rem;
             font-family: 'Cormorant Garamond', serif;
-            color: #243024;
+            color: var(--green-dark);
             line-height: 1;
             margin-bottom: 8px;
         }
 
-        .countdown div {
-            text-align: center;
-            font-size: .6rem;
-            color: #a3b18a;
+        .countdown-item .label {
+            font-size: .55rem;
+            color: var(--green-mid);
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        /* PALETTE SABBIA LINO */
-        :root {
-            --sand: #c8b89a;
-            --sand-light: #e8dfd0;
-            --sand-xlight: rgba(200, 184, 154, 0.12);
         }
 
         /* SEZIONI */
@@ -217,7 +249,7 @@
             background: rgba(244, 243, 238, 0.45);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            border: none;
+            border-top: 1px solid rgba(var(--gold-rgb), 0.18);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
             mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
@@ -228,12 +260,21 @@
             z-index: 1;
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        /* SEPARATORE · · · */
+        .section-sep {
+            text-align: center;
+            color: var(--sand);
+            font-size: 0.55rem;
+            letter-spacing: 10px;
+            opacity: 0.7;
+            margin: -20px auto;
+            position: relative;
+            z-index: 2;
         }
 
-        /* ICONA SEZIONE */
+        /* ICONA — animazione ingresso */
         .section-icon {
             display: inline-flex;
             align-items: center;
@@ -241,8 +282,8 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: rgba(163, 177, 138, 0.1);
-            border: 1px solid rgba(163, 177, 138, 0.25);
+            background: rgba(var(--green-rgb), 0.1);
+            border: 1px solid rgba(var(--green-rgb), 0.25);
             margin-bottom: 22px;
             transition: transform 0.4s ease, background 0.4s ease;
         }
@@ -250,16 +291,25 @@
         .section-icon svg {
             width: 22px;
             height: 22px;
-            stroke: #a3b18a;
+            stroke: var(--green-mid);
             fill: none;
             stroke-width: 1.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
+        section.visible .section-icon svg {
+            animation: iconSpin 0.7s ease-out both;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(-30deg) scale(0.8); opacity: 0; }
+            to   { transform: rotate(0deg)  scale(1);   opacity: 1; }
+        }
+
         section:hover .section-icon {
             transform: scale(1.08);
-            background: rgba(163, 177, 138, 0.28);
+            background: rgba(var(--green-rgb), 0.2);
         }
 
         h2 {
@@ -267,35 +317,124 @@
             font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 25px;
-            color: #243024;
+            color: var(--green-dark);
         }
 
         h2::after {
             content: "";
             width: 30px;
             height: 1px;
-            background: #a3b18a;
+            background: var(--green-mid);
             display: block;
             margin: 20px auto 0;
             opacity: 0.6;
         }
 
+        /* TIMELINE PROGRAMMA */
+        .timeline {
+            margin-top: 30px;
+            position: relative;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--gold), var(--green-mid));
+            opacity: 0.35;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            background: var(--bg);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .timeline-content .time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .timeline-content .desc {
+            font-size: 0.8rem;
+            color: var(--text);
+            font-weight: 300;
+            margin-top: 2px;
+        }
+
+        /* INFO STRIP ARRIVARE */
+        .info-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 24px 0 0;
+            border-top: 1px solid rgba(var(--green-rgb), 0.15);
+            border-bottom: 1px solid rgba(var(--green-rgb), 0.15);
+        }
+
+        .info-strip-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            color: var(--text);
+            letter-spacing: 0.5px;
+            padding: 12px 20px;
+            border-right: 1px solid rgba(var(--green-rgb), 0.15);
+        }
+
+        .info-strip-item:last-child { border-right: none; }
+
+        .info-strip-item svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* BUTTON */
         .button {
             margin-top: 30px;
             padding: 15px 50px;
-            border: 1px solid #a3b18a;
+            border: 1px solid var(--green-mid);
             background: transparent;
-            color: #a3b18a;
+            color: var(--green-mid);
             cursor: pointer;
             transition: all 0.5s;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.7rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .button:hover {
-            background: #a3b18a;
-            color: #243024;
+            background: var(--green-mid);
+            color: var(--green-dark);
         }
 
         iframe {
@@ -307,7 +446,6 @@
             filter: sepia(0.2) contrast(0.9);
         }
 
-        /* ATTRIBUZIONE */
         .attribution {
             font-size: 0.6rem;
             color: var(--sand);
@@ -316,12 +454,10 @@
             letter-spacing: 1px;
         }
 
-        .attribution a {
-            color: var(--sand);
-        }
+        .attribution a { color: var(--sand); }
 
         footer {
-            margin-top: 100px;
+            margin-top: 60px;
             padding: 80px 20px;
             text-align: center;
             font-size: .65rem;
@@ -330,23 +466,18 @@
             letter-spacing: 4px;
         }
 
-        /* DESKTOP STYLES */
+        /* DESKTOP */
         @media(min-width: 768px) {
-            nav {
-                justify-content: space-between;
-                padding: 0 40px;
-            }
+            nav { justify-content: space-between; padding: 0 40px; }
 
             .nav-logo {
                 position: static;
                 transform: none;
                 left: auto;
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
-            .menu-toggle {
-                display: none;
-            }
+            .menu-toggle { display: none; }
 
             .nav-menu {
                 position: static;
@@ -357,28 +488,17 @@
                 gap: 35px;
             }
 
-            .nav-menu a {
-                font-size: 0.7rem;
-                letter-spacing: 3px;
-            }
+            .nav-menu a { font-size: 0.7rem; letter-spacing: 3px; }
 
-            header h1 {
-                font-size: 5rem;
-            }
+            header h1 { font-size: 5rem; }
 
-            .countdown {
-                gap: 60px;
-            }
+            .countdown { gap: 16px; }
+            .countdown-item { min-width: 90px; padding: 20px 24px 14px; }
+            .countdown-item span { font-size: 3.5rem; }
 
-            .countdown span {
-                font-size: 3.5rem;
-                margin-bottom: 10px;
-            }
+            section { max-width: 850px; padding: 100px 80px; }
 
-            section {
-                max-width: 850px;
-                padding: 100px 80px;
-            }
+            .info-strip-item { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -387,11 +507,9 @@
 
     <nav>
         <a href="#" class="nav-logo">T & J</a>
-
         <div class="menu-toggle" id="mobile-menu">
             <span></span><span></span><span></span>
         </div>
-
         <div class="nav-menu" id="nav-links">
             <a href="#programma">Programma</a>
             <a href="#arrivare">Dove</a>
@@ -403,174 +521,165 @@
         </div>
     </nav>
 
-    <div class="hero-image-container"></div>
+    <div class="hero-image-container">
+        <div class="scroll-indicator"><span></span></div>
+    </div>
 
     <header>
         <h1>Tommaso & Janira</h1>
-        <p>29 Agosto 2026 • Alghero</p>
-
+        <p>29 Agosto 2026 · Alghero</p>
         <div class="countdown">
-            <div><span id="days"></span>Giorni</div>
-            <div><span id="hours"></span>Ore</div>
-            <div><span id="minutes"></span>Minuti</div>
-            <div><span id="seconds"></span>Secondi</div>
+            <div class="countdown-item"><span id="days">—</span><span class="label">Giorni</span></div>
+            <div class="countdown-item"><span id="hours">—</span><span class="label">Ore</span></div>
+            <div class="countdown-item"><span id="minutes">—</span><span class="label">Minuti</span></div>
+            <div class="countdown-item"><span id="seconds">—</span><span class="label">Secondi</span></div>
         </div>
     </header>
 
     <!-- Programma -->
     <section id="programma">
         <div class="section-icon">
-            <!-- Calendario -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="4" width="18" height="18" rx="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <h2>Programma</h2>
-        <p><strong>Ore 16:00</strong> — Cerimonia presso la Chiesa di San Francesco</p>
-        <p><strong>Ore 18:30</strong> — Aperitivo e Ricevimento a Villa Mosca</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="time">16:00</div>
+                    <div class="desc">Cerimonia presso la Chiesa di San Francesco</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="time">18:30</div>
+                    <div class="desc">Aperitivo e Ricevimento a Villa Mosca</div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <div class="section-sep">· · ·</div>
 
     <!-- Come arrivare -->
     <section id="arrivare">
         <div class="section-icon">
-            <!-- Pin mappa -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z"/>
-                <circle cx="12" cy="8" r="2"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg>
         </div>
         <h2>Come arrivare</h2>
-        <p>Villa Mosca - Lungomare Dante, Alghero</p>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"></iframe>
+        <div class="info-strip">
+            <div class="info-strip-item">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Aeroporto di Alghero — 15 min
+            </div>
+            <div class="info-strip-item">
+                <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                Parcheggio disponibile
+            </div>
+            <div class="info-strip-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg>
+                Villa Mosca — Lungomare Dante
+            </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"></iframe>
     </section>
+
+    <div class="section-sep">· · ·</div>
 
     <!-- RSVP -->
     <section id="rsvp">
         <div class="section-icon">
-            <!-- Busta lettera -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="5" width="20" height="14" rx="2"/>
-                <polyline points="2,5 12,13 22,5"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2,5 12,13 22,5"/></svg>
         </div>
         <h2>RSVP</h2>
         <p>Vi preghiamo di confermare la vostra partecipazione</p>
         <form action="https://formspree.io/f/xkovnvrn" method="POST">
             <input type="text" name="nome" placeholder="Nome e Cognome" required
-                style="width:100%; padding:15px; margin:20px 0 10px; border:1px solid rgba(163,177,138,0.3); font-family:inherit;">
+                style="width:100%; padding:15px; margin:20px 0 10px; border:1px solid rgba(163,177,138,0.3); background:transparent; font-family:inherit; font-size:0.85rem; color:var(--text);">
             <button class="button">Conferma ora</button>
         </form>
     </section>
 
+    <div class="section-sep">· · ·</div>
+
     <!-- Dormire -->
     <section id="dormire">
         <div class="section-icon">
-            <!-- Luna / notte -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </div>
         <h2>Dove dormire</h2>
         <p>Vi consigliamo di prenotare con anticipo. Ecco alcune strutture vicine alla location.</p>
     </section>
 
+    <div class="section-sep">· · ·</div>
+
     <!-- Lista nozze -->
     <section id="lista">
         <div class="section-icon">
-            <!-- Fiocco / regalo -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="10" width="18" height="11" rx="1"/>
-                <rect x="2" y="6" width="20" height="4" rx="1"/>
-                <line x1="12" y1="6" x2="12" y2="21"/>
-                <path d="M12 6C12 6 9 3 7 4s-1 4 5 2"/>
-                <path d="M12 6C12 6 15 3 17 4s1 4-5 2"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="1"/><rect x="2" y="6" width="20" height="4" rx="1"/><line x1="12" y1="6" x2="12" y2="21"/><path d="M12 6C12 6 9 3 7 4s-1 4 5 2"/><path d="M12 6C12 6 15 3 17 4s1 4-5 2"/></svg>
         </div>
         <h2>Lista nozze</h2>
         <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
     </section>
 
+    <div class="section-sep">· · ·</div>
+
     <!-- Foto -->
     <section id="foto">
         <div class="section-icon">
-            <!-- Fotocamera -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                <circle cx="12" cy="13" r="4"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
         <h2>Foto</h2>
         <p>Le foto saranno disponibili qui dopo il grande giorno.</p>
     </section>
 
+    <div class="section-sep">· · ·</div>
+
     <!-- FAQ -->
     <section id="faq">
         <div class="section-icon">
-            <!-- Punto interrogativo / messaggio -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <h2>FAQ</h2>
         <p>Hai domande? Scrivici e risponderemo con piacere.</p>
     </section>
 
-    <div class="attribution">
-        <a href="https://www.flaticon.com/free-icons/wedding" title="wedding icons" target="_blank">Wedding icons created by photo3idea_studio — Flaticon</a>
-    </div>
-
-    <footer>
-        Tommaso & Janira — 29.08.2026
-    </footer>
+    <footer>Tommaso & Janira — 29.08.2026</footer>
 
     <script>
-        /* LOGICA MENU MOBILE */
         const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        const links = document.querySelectorAll('.nav-menu a');
-
+        const navLinks   = document.getElementById('nav-links');
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('open');
             navLinks.classList.toggle('active');
         });
+        document.querySelectorAll('.nav-menu a').forEach(l => l.addEventListener('click', () => {
+            menuToggle.classList.remove('open');
+            navLinks.classList.remove('active');
+        }));
 
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('open');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        /* ANIMAZIONI SCROLL */
-        const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('visible');
-            });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-        sections.forEach(s => observer.observe(s));
+        const scrollInd = document.querySelector('.scroll-indicator');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) scrollInd.style.opacity = '0';
+        }, { passive: true });
 
-        /* COUNTDOWN */
         const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
         setInterval(() => {
-            const now = new Date().getTime();
-            const d = weddingDate - now;
+            const d = weddingDate - Date.now();
             if (d > 0) {
-                document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
-                document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
+                document.getElementById("days").innerText    = Math.floor(d / 86400000);
+                document.getElementById("hours").innerText   = Math.floor((d / 3600000) % 24);
+                document.getElementById("minutes").innerText = Math.floor((d / 60000) % 60);
                 document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
             }
         }, 1000);
     </script>
 
 </body>
-
 </html>
