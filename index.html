@@ -490,11 +490,20 @@
         .timeline-content {
             width: 42%;
             text-align: center;
+            text-decoration: none;
+            /* Rimuove sottolineatura link */
+            display: block;
+            /* Rende tutta l'area cliccabile */
+            transition: transform 0.3s ease;
+        }
 
-            .schedule-icon {
-                opacity: 0.6 !important;
-                width: 50px;
-            }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content .schedule-icon {
+            opacity: 0.6 !important;
+            width: 50px;
         }
 
         /* alternanza */
@@ -582,6 +591,29 @@
         .timeline.visible::after {
             opacity: 0.6;
         }
+
+        .radio_group input[type="radio"] {
+            accent-color: #c9a96e;
+            cursor: pointer;
+            transform: scale(1.1);
+            vertical-align: middle;
+            outline: none;
+        }
+
+        .radio_group input[type="radio"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+        }
+
+        .radio_item {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        /* Opzionale: cambia colore al testo dell'etichetta quando passi sopra */
+        .radio_item:hover {
+            color: #c9a96e;
+        }
     </style>
 </head>
 
@@ -598,9 +630,7 @@
             <a href="#programma">Programma</a>
             <a href="#arrivare">Come Arrivare</a>
             <a href="#rsvp">RSVP</a>
-            <a href="#dormire">Dove Dormire</a>
             <a href="#lista">Lista Nozze</a>
-            <a href="#faq">FAQ</a>
         </div>
     </nav>
 
@@ -633,19 +663,19 @@
         <div class="timeline">
 
             <div class="timeline-item">
-                <div class="timeline-content">
+                <a href="#mappa-chiesa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/church.png">
                     <div class="timeline-time">16:00</div>
                     <div class="timeline-text">Cerimonia presso la Chiesa di San Francesco</div>
-                </div>
+                </a>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-content">
+                <a href="#mappa-villa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/wine (1).png">
                     <div class="timeline-time">18:30</div>
                     <div class="timeline-text">Aperitivo e Ricevimento a Villa Mosca</div>
-                </div>
+                </a>
             </div>
 
         </div>
@@ -660,13 +690,13 @@
         </div>
         <h2>Come arrivare</h2>
 
-        <iframe
+        <iframe id="mappa-chiesa"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.245952660656!2d8.311128876552907!3d40.55824554701341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1de02e02d27%3A0x8c4662a864733ebe!2sComplesso%20Monumentale%20San%20Francesco!5e0!3m2!1sit!2sit!4v1774866795733!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p>Chiesa San Francesco - Alghero</p>
 
-        <iframe
+        <iframe id="mappa-villa"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -720,16 +750,6 @@
         </form>
     </section>
 
-    <section id="dormire">
-        <div class="section-icon">
-            <svg viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-        </div>
-        <h2>Dove dormire</h2>
-        <p>Vi consigliamo di prenotare con anticipo. Ecco alcune strutture vicine alla location.</p>
-    </section>
-
     <section id="lista">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -742,18 +762,6 @@
         </div>
         <h2>Lista nozze</h2>
         <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
-    </section>
-
-    <section id="faq">
-        <div class="section-icon">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-        </div>
-        <h2>FAQ</h2>
-        <p>Hai domande? Scrivici e risponderemo con piacere.</p>
     </section>
 
     <footer>
@@ -786,7 +794,7 @@
             });
         }, { threshold: 0.1 });
 
-            sections.forEach(s => observer.observe(s));
+        sections.forEach(s => observer.observe(s));
 
         /* COUNTDOWN */
         const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
