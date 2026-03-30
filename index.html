@@ -62,155 +62,20 @@
             z-index: 2000;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             padding: 0 25px;
             border-bottom: 1px solid rgba(201, 169, 110, 0.1);
         }
 
         .nav-logo {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-
-        .logo-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #243024;
-            letter-spacing: 3px;
-            z-index: 2;
-            transition: color 0.4s ease;
-        }
-
-        .logo-botanical {
+            text-decoration: none;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 160px;
-            /* Leggermente più grande per abbracciare il testo */
-            height: 80px;
-            pointer-events: none;
-            overflow: visible;
-        }
-
-        /* RAMI (Stem) */
-        .stem {
-            stroke: #a3b18a;
-            stroke-width: 0.8;
-            fill: none;
-            stroke-linecap: round;
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: drawStem 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        /* FOGLIE (Mirto) */
-        .leaf {
-            fill: #a3b18a;
-            fill-opacity: 0.25;
-            stroke: #a3b18a;
-            stroke-width: 0.3;
-            opacity: 0;
-            transform-origin: center;
-            animation: bloomLeaf 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        /* BACCHE/BOTTONI (Buds) */
-        .bud {
-            fill: #c9a96e;
-            opacity: 0;
-            animation: bloomBud 0.8s ease forwards;
-        }
-
-        .bud-halo {
-            fill: none;
-            stroke: #c9a96e;
-            stroke-width: 0.5;
-            stroke-opacity: 0.3;
-            opacity: 0;
-            transform-origin: center;
-            animation: bloomBud 1s ease 1s forwards;
-        }
-
-        /* RITARDI ANIMAZIONI */
-        .l1,
-        .l6 {
-            animation-delay: 0.8s;
-        }
-
-        .l2,
-        .l7 {
-            animation-delay: 1.0s;
-        }
-
-        .l3,
-        .l8 {
-            animation-delay: 1.2s;
-        }
-
-        .l4,
-        .l9 {
-            animation-delay: 1.4s;
-        }
-
-        .b1,
-        .b3 {
-            animation-delay: 1.6s;
-        }
-
-        .main-bud {
-            animation-delay: 1.8s;
-        }
-
-        /* KEYFRAMES */
-        @keyframes drawStem {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        @keyframes bloomLeaf {
-            0% {
-                opacity: 0;
-                transform: scale(0) translateY(5px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes bloomBud {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-            }
-
-            100% {
-                opacity: 0.8;
-                transform: scale(1);
-            }
-        }
-
-        /* EFFETTO HOVER */
-        .nav-logo:hover .logo-text {
-            color: #c9a96e;
-        }
-
-        .nav-logo:hover .leaf {
-            fill-opacity: 0.45;
-            transition: all 0.4s ease;
-        }
-
-        .nav-logo:hover .stem {
-            stroke: #7d8a6a;
-            /* Verde leggermente più scuro */
-            transition: stroke 0.4s ease;
+            left: 12%;
+            transform: translateX(-50%);
+            letter-spacing: 2px;
         }
 
         .menu-toggle {
@@ -755,37 +620,7 @@
 <body>
 
     <nav>
-        <a href="#" class="nav-logo" id="logoWrap">
-            <svg class="logo-botanical" viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg">
-                <g class="branch-left">
-                    <path class="stem" d="M70,30 Q55,28 42,22 Q30,15 20,10" />
-                    <path class="stem" d="M55,27 Q50,18 45,12" style="animation-delay:0.4s" />
-                    <path class="stem" d="M35,20 Q32,12 28,8" style="animation-delay:0.6s" />
-
-                    <ellipse class="leaf l1" cx="46" cy="11" rx="5" ry="2" transform="rotate(-30,46,11)" />
-                    <ellipse class="leaf l2" cx="42" cy="10" rx="4" ry="1.5" transform="rotate(-50,42,10)" />
-                    <ellipse class="leaf l3" cx="30" cy="15" rx="4.5" ry="2" transform="rotate(20,30,15)" />
-                    <ellipse class="leaf l4" cx="26" cy="7" rx="4" ry="1.8" transform="rotate(-60,26,7)" />
-                    <circle class="bud b1" cx="44" cy="13" r="1.2" />
-                </g>
-
-                <g class="branch-right">
-                    <path class="stem" d="M70,30 Q85,28 98,22 Q110,15 120,10" />
-                    <path class="stem" d="M85,27 Q90,18 95,12" style="animation-delay:0.45s" />
-                    <path class="stem" d="M105,20 Q108,12 112,8" style="animation-delay:0.65s" />
-
-                    <ellipse class="leaf l6" cx="94" cy="11" rx="5" ry="2" transform="rotate(30,94,11)" />
-                    <ellipse class="leaf l7" cx="98" cy="10" rx="4" ry="1.5" transform="rotate(50,98,10)" />
-                    <ellipse class="leaf l8" cx="110" cy="15" rx="4.5" ry="2" transform="rotate(-20,110,15)" />
-                    <ellipse class="leaf l9" cx="114" cy="7" rx="4" ry="1.8" transform="rotate(60,114,7)" />
-                    <circle class="bud b3" cx="96" cy="13" r="1.2" />
-                </g>
-
-                <circle class="bud main-bud" cx="70" cy="18" r="2.5" />
-                <circle class="bud-halo" cx="70" cy="18" r="5" />
-            </svg>
-            <span class="logo-text">T & J</span>
-        </a>
+        <a href="#" class="nav-logo">T & J</a>
 
         <div class="menu-toggle" id="mobile-menu">
             <span></span><span></span><span></span>
