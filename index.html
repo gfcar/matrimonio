@@ -439,6 +439,100 @@
             text-transform: uppercase;
             letter-spacing: 4px;
         }
+
+        /* TIMELINE PROGRAMMA */
+        .timeline {
+            position: relative;
+            margin-top: 60px;
+            padding: 40px 0;
+        }
+
+        /* linea centrale */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 0;
+            background: #a3b18a;
+            transform: translateX(-50%);
+            transition: height 1.5s ease;
+        }
+
+        .timeline.visible::before {
+            height: 100%;
+        }
+
+        /* BLOCCO */
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            margin-bottom: 80px;
+        }
+
+        /* CONTENUTO */
+        .timeline-content {
+            width: 42%;
+            text-align: center;
+        }
+
+        /* alternanza */
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        /* PUNTO CENTRALE */
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background: #a3b18a;
+            border-radius: 50%;
+            transform: translateX(-50%) scale(0);
+            transition: transform 0.4s ease;
+        }
+
+        .timeline-item.visible::after {
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* IMMAGINE */
+        .timeline-content img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible img {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* TESTI */
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: #243024;
+        }
+
+        .timeline-text {
+            font-size: 0.8rem;
+            color: #2d3a2d;
+        }
     </style>
 </head>
 
@@ -485,9 +579,28 @@
                 <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
         </div>
+
         <h2>Programma</h2>
-        <p><strong>Ore 16:00</strong> — Cerimonia presso la Chiesa di San Francesco</p>
-        <p><strong>Ore 18:30</strong> — Aperitivo e Ricevimento a Villa Mosca</p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="./images/cerimonia.jpg">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-text">Cerimonia presso la Chiesa di San Francesco</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="./images/aperitivo.jpg">
+                    <div class="timeline-time">18:30</div>
+                    <div class="timeline-text">Aperitivo e Ricevimento a Villa Mosca</div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <!-- Come arrivare -->
@@ -642,6 +755,23 @@
                 document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
             }
         }, 1000);
+
+        /* TIMELINE ANIMAZIONE */
+        const timeline = document.querySelector('.timeline');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const timelineObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timeline.classList.add('visible');
+                    timelineItems.forEach((item, i) => {
+                        setTimeout(() => item.classList.add('visible'), i * 300);
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineObserver.observe(timeline);
     </script>
 
 </body>
