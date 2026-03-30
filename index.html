@@ -91,6 +91,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 160px;
+            /* Leggermente più grande per abbracciare il testo */
             height: 80px;
             pointer-events: none;
             overflow: visible;
@@ -136,27 +137,81 @@
         }
 
         /* RITARDI ANIMAZIONI */
-        .l1, .l6 { animation-delay: 0.8s; }
-        .l2, .l7 { animation-delay: 1.0s; }
-        .l3, .l8 { animation-delay: 1.2s; }
-        .l4, .l9 { animation-delay: 1.4s; }
-        .b1, .b3 { animation-delay: 1.6s; }
-        .main-bud { animation-delay: 1.8s; }
+        .l1,
+        .l6 {
+            animation-delay: 0.8s;
+        }
 
-        @keyframes drawStem { to { stroke-dashoffset: 0; } }
+        .l2,
+        .l7 {
+            animation-delay: 1.0s;
+        }
+
+        .l3,
+        .l8 {
+            animation-delay: 1.2s;
+        }
+
+        .l4,
+        .l9 {
+            animation-delay: 1.4s;
+        }
+
+        .b1,
+        .b3 {
+            animation-delay: 1.6s;
+        }
+
+        .main-bud {
+            animation-delay: 1.8s;
+        }
+
+        /* KEYFRAMES */
+        @keyframes drawStem {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
         @keyframes bloomLeaf {
-            0% { opacity: 0; transform: scale(0) translateY(5px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @keyframes bloomBud {
-            0% { opacity: 0; transform: scale(0); }
-            100% { opacity: 0.8; transform: scale(1); }
+            0% {
+                opacity: 0;
+                transform: scale(0) translateY(5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
-        /* EFFETTO HOVER LOGO */
-        .nav-logo:hover .logo-text { color: #c9a96e; }
-        .nav-logo:hover .leaf { fill-opacity: 0.45; transition: all 0.4s ease; }
-        .nav-logo:hover .stem { stroke: #7d8a6a; transition: stroke 0.4s ease; }
+        @keyframes bloomBud {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* EFFETTO HOVER */
+        .nav-logo:hover .logo-text {
+            color: #c9a96e;
+        }
+
+        .nav-logo:hover .leaf {
+            fill-opacity: 0.45;
+            transition: all 0.4s ease;
+        }
+
+        .nav-logo:hover .stem {
+            stroke: #7d8a6a;
+            /* Verde leggermente più scuro */
+            transition: stroke 0.4s ease;
+        }
 
         .menu-toggle {
             display: flex;
@@ -189,7 +244,9 @@
             z-index: 2050;
         }
 
-        .nav-menu.active { right: 0; }
+        .nav-menu.active {
+            right: 0;
+        }
 
         .nav-menu a {
             text-decoration: none;
@@ -201,11 +258,21 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover { color: var(--sand); }
+        .nav-menu a:hover {
+            color: var(--sand);
+        }
 
-        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
 
         /* HERO IMAGE */
         .hero-image-container {
@@ -428,21 +495,89 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .radio_item:hover { color: #c9a96e; }
-
-        .radio_group input[type="radio"] {
-            accent-color: #c9a96e;
-            cursor: pointer;
-            transform: scale(1.1);
         }
 
         /* LOGICA VISIBILITÀ SPECIFICA */
         #gruppo_specifica {
             display: none;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                justify-content: space-between;
+                padding: 0 40px;
+            }
+
+            .nav-logo {
+                position: static;
+                transform: none;
+                left: auto;
+                font-size: 1.8rem;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                position: static;
+                height: auto;
+                width: auto;
+                background: transparent;
+                flex-direction: row;
+                gap: 35px;
+            }
+
+            .nav-menu a {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+            }
+
+            header h1 {
+                font-size: 5rem;
+            }
+
+            .countdown {
+                gap: 60px;
+            }
+
+            .countdown span {
+                font-size: 3.5rem;
+                margin-bottom: 10px;
+            }
+
+            section {
+                max-width: 850px;
+                padding: 100px 80px;
+            }
+
+            .form_matrimonio {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ATTRIBUZIONE / FOOTER */
+        .attribution {
+            font-size: 0.6rem;
+            color: var(--sand);
+            margin-top: 60px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .attribution a {
+            color: var(--sand);
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 80px 20px;
+            text-align: center;
+            font-size: .65rem;
+            color: var(--sand);
+            text-transform: uppercase;
+            letter-spacing: 4px;
         }
 
         /* TIMELINE PROGRAMMA */
@@ -452,41 +587,72 @@
             padding: 40px 0;
         }
 
+        /* linea centrale */
         .timeline::before {
             content: "";
             position: absolute;
             top: 0;
             left: 50%;
             width: 1px;
+            /* più sottile */
             height: 0;
             transform: translateX(-50%);
-            background: linear-gradient(to bottom, transparent, #a3b18a, #a3b18a, transparent);
+
+            /* colore elegante */
+            background: linear-gradient(to bottom,
+                    transparent,
+                    #a3b18a,
+                    #a3b18a,
+                    transparent);
+
+            /* animazione disegno */
             transition: height 1.8s ease;
             z-index: 1;
         }
 
-        .timeline.visible::before { height: 100%; }
+        .timeline.visible::before {
+            height: 100%;
+        }
 
+        /* BLOCCO */
         .timeline-item {
             position: relative;
             width: 100%;
             margin-bottom: 80px;
         }
 
+        /* CONTENUTO */
         .timeline-content {
             width: 42%;
             text-align: center;
             text-decoration: none;
+            /* Rimuove sottolineatura link */
             display: block;
+            /* Rende tutta l'area cliccabile */
             transition: transform 0.3s ease;
         }
 
-        .timeline-content:hover { transform: translateY(-5px); }
-        .timeline-content .schedule-icon { opacity: 0.6 !important; width: 50px; }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
 
-        .timeline-item:nth-child(odd) .timeline-content { margin-left: 0; margin-right: auto; }
-        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; margin-right: 0; }
+        .timeline-content .schedule-icon {
+            opacity: 0.6 !important;
+            width: 50px;
+        }
 
+        /* alternanza */
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        /* PUNTO CENTRALE */
         .timeline-item::after {
             content: "";
             position: absolute;
@@ -503,9 +669,13 @@
 
         .timeline-item.visible::after {
             transform: translateX(-50%) scale(1);
-            box-shadow: 0 0 0 4px #f4f4f0, 0 0 10px rgba(163, 177, 138, 0.6);
+            box-shadow:
+                0 0 0 4px #f4f4f0,
+                /* stacca dalla linea */
+                0 0 10px rgba(163, 177, 138, 0.6);
         }
 
+        /* IMMAGINE */
         .timeline-content img {
             width: 100%;
             border-radius: 4px;
@@ -515,8 +685,12 @@
             transition: all 0.8s ease;
         }
 
-        .timeline-item.visible img { opacity: 1; transform: translateY(0); }
+        .timeline-item.visible img {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
+        /* TESTI */
         .timeline-time {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
@@ -524,36 +698,56 @@
             color: #243024;
         }
 
-        .timeline-text { font-size: 0.8rem; color: #2d3a2d; }
-
-        /* RESPONSIVE */
-        @media (min-width: 768px) {
-            nav { padding: 0 40px; }
-            .menu-toggle { display: none; }
-            .nav-menu {
-                position: static;
-                height: auto;
-                width: auto;
-                background: transparent;
-                flex-direction: row;
-                gap: 35px;
-            }
-            .nav-menu a { font-size: 0.7rem; letter-spacing: 3px; }
-            header h1 { font-size: 5rem; }
-            .countdown { gap: 60px; }
-            .countdown span { font-size: 3.5rem; }
-            section { max-width: 850px; padding: 100px 80px; }
-            .form_matrimonio { max-width: 500px; margin: 0 auto; }
+        .timeline-text {
+            font-size: 0.8rem;
+            color: #2d3a2d;
         }
 
-        footer {
-            margin-top: 100px;
-            padding: 80px 20px;
-            text-align: center;
-            font-size: .65rem;
-            color: var(--sand);
-            text-transform: uppercase;
-            letter-spacing: 4px;
+        .timeline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            transform: translateX(-50%);
+
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 255, 255, 0.8),
+                    transparent);
+
+            opacity: 0;
+            animation: shimmer 2.5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .timeline.visible::after {
+            opacity: 0.6;
+        }
+
+        .radio_group input[type="radio"] {
+            accent-color: #c9a96e;
+            cursor: pointer;
+            transform: scale(1.1);
+            vertical-align: middle;
+            outline: none;
+        }
+
+        .radio_group input[type="radio"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+        }
+
+        .radio_item {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        /* Opzionale: cambia colore al testo dell'etichetta quando passi sopra */
+        .radio_item:hover {
+            color: #c9a96e;
         }
     </style>
 </head>
@@ -567,22 +761,26 @@
                     <path class="stem" d="M70,30 Q55,28 42,22 Q30,15 20,10" />
                     <path class="stem" d="M55,27 Q50,18 45,12" style="animation-delay:0.4s" />
                     <path class="stem" d="M35,20 Q32,12 28,8" style="animation-delay:0.6s" />
+
                     <ellipse class="leaf l1" cx="46" cy="11" rx="5" ry="2" transform="rotate(-30,46,11)" />
                     <ellipse class="leaf l2" cx="42" cy="10" rx="4" ry="1.5" transform="rotate(-50,42,10)" />
                     <ellipse class="leaf l3" cx="30" cy="15" rx="4.5" ry="2" transform="rotate(20,30,15)" />
                     <ellipse class="leaf l4" cx="26" cy="7" rx="4" ry="1.8" transform="rotate(-60,26,7)" />
                     <circle class="bud b1" cx="44" cy="13" r="1.2" />
                 </g>
+
                 <g class="branch-right">
                     <path class="stem" d="M70,30 Q85,28 98,22 Q110,15 120,10" />
                     <path class="stem" d="M85,27 Q90,18 95,12" style="animation-delay:0.45s" />
                     <path class="stem" d="M105,20 Q108,12 112,8" style="animation-delay:0.65s" />
+
                     <ellipse class="leaf l6" cx="94" cy="11" rx="5" ry="2" transform="rotate(30,94,11)" />
                     <ellipse class="leaf l7" cx="98" cy="10" rx="4" ry="1.5" transform="rotate(50,98,10)" />
                     <ellipse class="leaf l8" cx="110" cy="15" rx="4.5" ry="2" transform="rotate(-20,110,15)" />
                     <ellipse class="leaf l9" cx="114" cy="7" rx="4" ry="1.8" transform="rotate(60,114,7)" />
                     <circle class="bud b3" cx="96" cy="13" r="1.2" />
                 </g>
+
                 <circle class="bud main-bud" cx="70" cy="18" r="2.5" />
                 <circle class="bud-halo" cx="70" cy="18" r="5" />
             </svg>
@@ -606,6 +804,7 @@
     <header>
         <h1>Tommaso & Janira</h1>
         <p>29 Agosto 2026 • Alghero</p>
+
         <div class="countdown">
             <div><span id="days"></span>Giorni</div>
             <div><span id="hours"></span>Ore</div>
@@ -616,10 +815,18 @@
 
     <section id="programma">
         <div class="section-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
         </div>
+
         <h2>Programma</h2>
+
         <div class="timeline">
+
             <div class="timeline-item">
                 <a href="#mappa-chiesa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/church.png">
@@ -627,6 +834,7 @@
                     <div class="timeline-text">Cerimonia presso la Chiesa di San Francesco</div>
                 </a>
             </div>
+
             <div class="timeline-item">
                 <a href="#mappa-villa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/wine (1).png">
@@ -634,23 +842,38 @@
                     <div class="timeline-text">Aperitivo e Ricevimento a Villa Mosca</div>
                 </a>
             </div>
+
         </div>
     </section>
 
     <section id="arrivare">
         <div class="section-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z" /><circle cx="12" cy="8" r="2" /></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z" />
+                <circle cx="12" cy="8" r="2" />
+            </svg>
         </div>
         <h2>Come arrivare</h2>
-        <iframe id="mappa-chiesa" src="https://www.google.com/maps/embed?pb=..." width="600" height="450" loading="lazy"></iframe>
+
+        <iframe id="mappa-chiesa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.245952660656!2d8.311128876552907!3d40.55824554701341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1de02e02d27%3A0x8c4662a864733ebe!2sComplesso%20Monumentale%20San%20Francesco!5e0!3m2!1sit!2sit!4v1774866795733!5m2!1sit!2sit"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p>Chiesa San Francesco - Alghero</p>
-        <iframe id="mappa-villa" src="https://www.google.com/maps/embed?pb=..." width="600" height="450" loading="lazy"></iframe>
+
+        <iframe id="mappa-villa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p>Villa Mosca - Alghero</p>
     </section>
 
     <section id="rsvp">
         <div class="section-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" /><polyline points="2,5 12,13 22,5" /></svg>
+            <svg viewBox="0 0 24 24">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <polyline points="2,5 12,13 22,5" />
+            </svg>
         </div>
         <h2>RSVP</h2>
         <p>Vi preghiamo di confermare la vostra partecipazione</p>
@@ -674,7 +897,8 @@
                 <div class="form_group">
                     <label>Intolleranze e/o preferenze alimentari?</label>
                     <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="intolleranze" value="si" required> Sì</label>
+                        <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
+                            Sì</label>
                         <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
                     </div>
                 </div>
@@ -693,7 +917,13 @@
 
     <section id="lista">
         <div class="section-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="1" /><rect x="2" y="6" width="20" height="4" rx="1" /><line x1="12" y1="6" x2="12" y2="21" /><path d="M12 6C12 6 9 3 7 4s-1 4 5 2" /><path d="M12 6C12 6 15 3 17 4s1 4-5 2" /></svg>
+            <svg viewBox="0 0 24 24">
+                <rect x="3" y="10" width="18" height="11" rx="1" />
+                <rect x="2" y="6" width="20" height="4" rx="1" />
+                <line x1="12" y1="6" x2="12" y2="21" />
+                <path d="M12 6C12 6 9 3 7 4s-1 4 5 2" />
+                <path d="M12 6C12 6 15 3 17 4s1 4-5 2" />
+            </svg>
         </div>
         <h2>Lista nozze</h2>
         <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
@@ -721,13 +951,14 @@
             });
         });
 
-        /* ANIMAZIONI SCROLL SEZIONI */
+        /* ANIMAZIONI SCROLL */
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
+
         sections.forEach(s => observer.observe(s));
 
         /* COUNTDOWN */
@@ -746,6 +977,7 @@
         /* TIMELINE ANIMAZIONE */
         const timeline = document.querySelector('.timeline');
         const timelineItems = document.querySelectorAll('.timeline-item');
+
         const timelineObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -756,6 +988,7 @@
                 }
             });
         }, { threshold: 0.2 });
+
         timelineObserver.observe(timeline);
 
         /* LOGICA CONDIZIONALE INTOLLERANZE */
@@ -771,11 +1004,12 @@
                 } else {
                     gruppoSpecifica.style.display = 'none';
                     inputSpecifica.required = false;
-                    inputSpecifica.value = '';
+                    inputSpecifica.value = ''; // Pulisce il campo se l'utente cambia idea
                 }
             });
         });
     </script>
 
 </body>
+
 </html>
