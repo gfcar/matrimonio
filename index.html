@@ -362,6 +362,11 @@
             gap: 5px;
         }
 
+        /* LOGICA VISIBILITÀ SPECIFICA */
+        #gruppo_specifica {
+            display: none;
+        }
+
         @media (min-width: 768px) {
             nav {
                 justify-content: space-between;
@@ -577,29 +582,6 @@
         .timeline.visible::after {
             opacity: 0.6;
         }
-
-        .timeline::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 3px;
-            height: 100%;
-            transform: translateX(-50%);
-
-            background: linear-gradient(to bottom,
-                    transparent,
-                    rgba(255, 255, 255, 0.8),
-                    transparent);
-
-            opacity: 0;
-            animation: shimmer 2.5s linear infinite;
-            pointer-events: none;
-        }
-
-        .timeline.visible::after {
-            opacity: 0.6;
-        }
     </style>
 </head>
 
@@ -636,7 +618,6 @@
         </div>
     </header>
 
-    <!-- Programma -->
     <section id="programma">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -670,7 +651,6 @@
         </div>
     </section>
 
-    <!-- Come arrivare -->
     <section id="arrivare">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -693,7 +673,6 @@
         <p>Villa Mosca - Alghero</p>
     </section>
 
-    <!-- RSVP -->
     <section id="rsvp">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -720,7 +699,7 @@
                     <label>Accompagnatore/Accompagnatrice</label>
                     <input type="text" name="piu_uno">
                 </div>
-                <div class="form_group" required>
+                <div class="form_group">
                     <label>Intolleranze e/o preferenze alimentari?</label>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
@@ -728,9 +707,9 @@
                         <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
                     </div>
                 </div>
-                <div class="form_group">
-                    <label>Specifica</label>
-                    <input type="text" name="specifica_intolleranze">
+                <div class="form_group" id="gruppo_specifica">
+                    <label>Specifica *</label>
+                    <input type="text" name="specifica_intolleranze" id="input_specifica">
                 </div>
                 <div class="form_group">
                     <label>Messaggio agli sposi</label>
@@ -741,7 +720,6 @@
         </form>
     </section>
 
-    <!-- Dormire -->
     <section id="dormire">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -752,7 +730,6 @@
         <p>Vi consigliamo di prenotare con anticipo. Ecco alcune strutture vicine alla location.</p>
     </section>
 
-    <!-- Lista nozze -->
     <section id="lista">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -767,7 +744,6 @@
         <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
         <div class="section-icon">
             <svg viewBox="0 0 24 24">
@@ -810,7 +786,7 @@
             });
         }, { threshold: 0.1 });
 
-        sections.forEach(s => observer.observe(s));
+            sections.forEach(s => observer.observe(s));
 
         /* COUNTDOWN */
         const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
@@ -841,10 +817,26 @@
         }, { threshold: 0.2 });
 
         timelineObserver.observe(timeline);
+
+        /* LOGICA CONDIZIONALE INTOLLERANZE */
+        const radioIntolleranze = document.querySelectorAll('input[name="intolleranze"]');
+        const gruppoSpecifica = document.getElementById('gruppo_specifica');
+        const inputSpecifica = document.getElementById('input_specifica');
+
+        radioIntolleranze.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'si' && radio.checked) {
+                    gruppoSpecifica.style.display = 'flex';
+                    inputSpecifica.required = true;
+                } else {
+                    gruppoSpecifica.style.display = 'none';
+                    inputSpecifica.required = false;
+                    inputSpecifica.value = ''; // Pulisce il campo se l'utente cambia idea
+                }
+            });
+        });
     </script>
 
 </body>
 
 </html>
-
-<!-- https://www.flaticon.com/free-icons/wedding/2 -->
