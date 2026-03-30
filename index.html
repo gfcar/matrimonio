@@ -312,6 +312,7 @@
         }
 
         .conferma_container {
+            padding-top: 20px;
             display: flex;
             flex-direction: column;
             gap: 18px;
@@ -327,7 +328,7 @@
             font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #a3b18a;
+            color: #2d3a2d;
         }
 
         .form_group input,
@@ -456,7 +457,6 @@
             <a href="#rsvp">RSVP</a>
             <a href="#dormire">Dove Dormire</a>
             <a href="#lista">Lista Nozze</a>
-            <a href="#foto">Foto</a>
             <a href="#faq">FAQ</a>
         </div>
     </nav>
@@ -499,10 +499,16 @@
             </svg>
         </div>
         <h2>Come arrivare</h2>
-        <p>Villa Mosca - Lungomare Dante, Alghero</p>
+
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit">
         </iframe>
+        <p>Villa Mosca - Lungomare Dante, Alghero</p>
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.474665481742!2d8.3134651!3d40.5531988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d6997410000001%3A0x6b4998499264424a!2sVilla%20Mosca%20Relais!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit">
+        </iframe>
+        <p>Villa Mosca - Lungomare Dante, Alghero</p>
     </section>
 
     <!-- RSVP -->
@@ -532,10 +538,11 @@
                     <label>Accompagnatore/Accompagnatrice</label>
                     <input type="text" name="piu_uno">
                 </div>
-                <div class="form_group">
-                    <label>Intolleranze?</label>
+                <div class="form_group" required>
+                    <label>Intolleranze e/o preferenze alimentari?</label>
                     <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="intolleranze" value="si"> Sì</label>
+                        <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
+                            Sì</label>
                         <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
                     </div>
                 </div>
@@ -576,18 +583,6 @@
         </div>
         <h2>Lista nozze</h2>
         <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
-    </section>
-
-    <!-- Foto -->
-    <section id="foto">
-        <div class="section-icon">
-            <svg viewBox="0 0 24 24">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                <circle cx="12" cy="13" r="4" />
-            </svg>
-        </div>
-        <h2>Foto</h2>
-        <p>Le foto saranno disponibili qui dopo il grande giorno.</p>
     </section>
 
     <!-- FAQ -->
@@ -650,4 +645,5 @@
     </script>
 
 </body>
+
 </html>
