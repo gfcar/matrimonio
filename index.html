@@ -453,11 +453,21 @@
             position: absolute;
             top: 0;
             left: 50%;
-            width: 2px;
+            width: 1px;
+            /* più sottile */
             height: 0;
-            background: #a3b18a;
             transform: translateX(-50%);
-            transition: height 1.5s ease;
+
+            /* colore elegante */
+            background: linear-gradient(to bottom,
+                    transparent,
+                    #a3b18a,
+                    #a3b18a,
+                    transparent);
+
+            /* animazione disegno */
+            transition: height 1.8s ease;
+            z-index: 1;
         }
 
         .timeline.visible::before {
@@ -494,16 +504,21 @@
             position: absolute;
             top: 20px;
             left: 50%;
-            width: 14px;
-            height: 14px;
+            width: 10px;
+            height: 10px;
             background: #a3b18a;
             border-radius: 50%;
             transform: translateX(-50%) scale(0);
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            z-index: 2;
         }
 
         .timeline-item.visible::after {
             transform: translateX(-50%) scale(1);
+            box-shadow:
+                0 0 0 4px #f4f4f0,
+                /* stacca dalla linea */
+                0 0 10px rgba(163, 177, 138, 0.6);
         }
 
         /* IMMAGINE */
@@ -532,6 +547,53 @@
         .timeline-text {
             font-size: 0.8rem;
             color: #2d3a2d;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            transform: translateX(-50%);
+
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 255, 255, 0.8),
+                    transparent);
+
+            opacity: 0;
+            animation: shimmer 2.5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .timeline.visible::after {
+            opacity: 0.6;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            transform: translateX(-50%);
+
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 255, 255, 0.8),
+                    transparent);
+
+            opacity: 0;
+            animation: shimmer 2.5s linear infinite;
+            pointer-events: none;
+        }
+
+        .timeline.visible::after {
+            opacity: 0.6;
         }
     </style>
 </head>
