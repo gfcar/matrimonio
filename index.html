@@ -377,6 +377,10 @@
             display: none;
         }
 
+        #gruppo_bambini {
+            display: none;
+        }
+
         @media (min-width: 768px) {
             nav {
                 justify-content: space-between;
@@ -512,7 +516,7 @@
         }
 
         .timeline-content .schedule-icon {
-            width: 60px;
+            width: 90px;
         }
 
         /* alternanza */
@@ -553,7 +557,6 @@
         .timeline-content img {
             width: 100%;
             border-radius: 4px;
-            margin-bottom: 15px;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
@@ -623,6 +626,46 @@
         .radio_item:hover {
             color: #c9a96e;
         }
+
+
+        .guide-container {
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .guide-category h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #243024;
+            border-bottom: 1px solid var(--sand-light);
+            margin-bottom: 10px;
+        }
+
+        .guide-list {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #4a5a4a;
+            padding: 0;
+        }
+
+        .guide-list li {
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price-tag {
+            color: #c9a96e;
+            font-weight: 400;
+        }
+
+        @media (min-width: 600px) {
+            .guide-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -640,6 +683,7 @@
             <a href="#arrivare">Come Arrivare</a>
             <a href="#rsvp">RSVP</a>
             <a href="#lista">Lista Nozze</a>
+            <a href="#scopri">Scopri Alghero</a>
         </div>
     </nav>
 
@@ -670,6 +714,15 @@
                 <a href="#mappa-chiesa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/chiesa.png">
                     <div class="timeline-time">16:00</div>
+                    <div class="timeline-text"><b>Ritrovo</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
+                    </div>
+                </a>
+            </div>
+
+            <div class="timeline-item">
+                <a href="#mappa-chiesa" class="timeline-content">
+                    <img class="schedule-icon" src="./images/icons/anelli.png">
+                    <div class="timeline-time">16:30</div>
                     <div class="timeline-text"><b>Cerimonia</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
                     </div>
                 </a>
@@ -703,15 +756,18 @@
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.2028652976583!2d8.310063576552947!3d40.5591971469552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1e09622a5cf%3A0x8d3c58c73af662ab!2sParrocchia%20Cattedrale%20dell%E2%80%99Immacolata%20Concezione!5e0!3m2!1sit!2sit!4v1774877441897!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <br>
-        <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> - Alghero</p>
-
+        <br>
+        <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> <br> Piazza D'uomo 2, 07041, Alghero</p>
+        <br>
+        <br>
         <iframe id="mappa-villa"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <br>
-        <p><b>Villa Mosca </b>- Alghero</p>
+        <br>
+        <p><b>Villa Mosca </b>
+            <br> Via Antonio Gramsci 17, 07041, Alghero
+        </p>
     </section>
 
     <section id="rsvp">
@@ -736,6 +792,18 @@
                 <div class="form_group">
                     <label>Accompagnatore/Accompagnatrice</label>
                     <input type="text" name="piu_uno">
+                </div>
+                <div class="form_group">
+                    <label>Ci sono bambini con te? *</label>
+                    <div class="radio_group">
+                        <label class="radio_item"><input type="radio" name="bambini" value="si" required>
+                            Sì</label>
+                        <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
+                    </div>
+                </div>
+                <div class="form_group" id="gruppo_bambini">
+                    <label>Quanti? *</label>
+                    <input type="text" name="specifica_bambini" id="input_bambini">
                 </div>
                 <div class="form_group">
                     <label>Intolleranze e/o preferenze alimentari? *</label>
@@ -766,15 +834,93 @@
         <p><i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra le
                 vette
                 delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo inizio. </i>
-                <br>
-                <br> Il vostro affetto è per noi il dono più prezioso.
-                <br>
-                <br> Se vorrete accompagnarci in questa avventura speciale,
-                lasciamo qui un modo per farlo:
+            <br>
+            <br> Il vostro affetto è per noi il dono più prezioso.
+            <br>
+            <br> Se vorrete accompagnarci in questa avventura speciale,
+            lasciamo qui un modo per farlo:
             <br>
             <br> <b>IT52H0305801604100572428245</b>
         </p>
     </section>
+
+    <section id="scopri" class="scopri-alghero">
+        <div class="section-icon">
+            <img src="./images/icons/pin.png" alt="Scopri">
+        </div>
+
+        <div class="accordion-header" onclick="toggleAlghero()" style="cursor: pointer;">
+            <h2>Scopri Alghero <span id="accordion-arrow"
+                    style="display: inline-block; transition: transform 0.3s ease; font-size: 1.5rem; vertical-align: middle; margin-left: 10px;">↓</span>
+            </h2>
+            <p><i>I nostri consigli per il vostro soggiorno</i></p>
+        </div>
+
+        <div id="accordion-content"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; opacity: 0;">
+            <div class="guide-container" style="padding-top: 40px;">
+                <div class="guide-category">
+                    <h3>🌊 Il Mare</h3>
+                    <ul class="guide-list">
+                        <li>Il Lazzaretto & Le Bombarde</li>
+                        <li>Porto Ferro (Spiaggia & Surf)</li>
+                        <li>Noleggio gommone (dal Porto)</li>
+                        <li>Giro delle calette</li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <h3>🍸 Aperitivo</h3>
+                    <ul class="guide-list">
+                        <li><b>Villa Mosca</b> (Vista mare)</li>
+                        <li><b>Riservato</b> & <b>Bahia</b></li>
+                        <li><b>Rifugio di Mare</b> (Punta Giglio)</li>
+                        <li><b>Bar di Porto Ferro</b> (Easy vibe)</li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <h3>🍤 Dove Mangiare</h3>
+                    <ul class="guide-list">
+                        <li><span>Focaccia dal Milese</span> <span class="price-tag">€</span></li>
+                        <li><span>Ballarini (Fertilia)</span> <span class="price-tag">€</span></li>
+                        <li><span>Bella Napoli</span> <span class="price-tag">€€</span></li>
+                        <li><span>Musciora / Nautilus</span> <span class="price-tag">€€€</span></li>
+                        <li><span>La Piccola Cucina</span> <span class="price-tag">€€€€</span></li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <h3>🍦 Tipici & Gelato</h3>
+                    <ul class="guide-list">
+                        <li><b>Sa Mandra</b> (Esperienza sarda 🔝)</li>
+                        <li><b>Agriturismo Barbagia</b></li>
+                        <li><b>Golositas</b> (Gelato)</li>
+                        <li><b>Re Gelato</b> (Gelato)</li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <h3>🌅 Da non perdere</h3>
+                    <ul class="guide-list">
+                        <li>Grotte di Nettuno</li>
+                        <li>Belvedere di Capo Caccia</li>
+                        <li>Torre del Porticciolo</li>
+                    </ul>
+                </div>
+
+                <div class="guide-category">
+                    <h3>🍷 Cantine</h3>
+                    <ul class="guide-list">
+                        <li>Tenute Sella & Mosca</li>
+                        <li>Podere Guardia Grande</li>
+                        <li>Santa Maria La Palma</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer>
         Tommaso & Janira — 29.08.2026
@@ -855,6 +1001,38 @@
                 }
             });
         });
+
+        const radioBambini = document.querySelectorAll('input[name="bambini"]');
+        const gruppoBambini = document.getElementById('gruppo_bambini');
+        const inputBambini = document.getElementById('input_bambini');
+
+        radioBambini.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'si' && radio.checked) {
+                    gruppoBambini.style.display = 'flex';
+                    inputBambini.required = true;
+                } else {
+                    gruppoBambini.style.display = 'none';
+                    inputBambini.required = false;
+                    inputBambini.value = ''; // Pulisce il campo se l'utente cambia idea
+                }
+            });
+        });
+
+        function toggleAlghero() {
+            const content = document.getElementById('accordion-content');
+            const arrow = document.getElementById('accordion-arrow');
+
+            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.opacity = "1";
+                arrow.style.transform = "rotate(180deg)";
+            } else {
+                content.style.maxHeight = "0px";
+                content.style.opacity = "0";
+                arrow.style.transform = "rotate(0deg)";
+            }
+        }
     </script>
 
 </body>
