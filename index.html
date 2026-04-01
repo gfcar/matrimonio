@@ -252,20 +252,20 @@
             transform: scale(1.08);
         }
 
-.section-icon {
-    position: relative;
-    z-index: 1;
-}
+        .section-icon {
+            position: relative;
+            z-index: 1;
+        }
 
-.section-icon::before {
-    content: "";
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    background: var(--sand-xlight);
-    border-radius: 50%;
-    z-index: -1;
-}
+        .section-icon::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: var(--sand-xlight);
+            border-radius: 50%;
+            z-index: -1;
+        }
 
 
 
@@ -670,7 +670,7 @@
                 <a href="#mappa-chiesa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/chiesa.png">
                     <div class="timeline-time">16:00</div>
-                    <div class="timeline-text">Cerimonia, Parrocchia Cattedrale dell’Immacolata Concezione
+                    <div class="timeline-text"><b>Cerimonia</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
                     </div>
                 </a>
             </div>
@@ -679,14 +679,14 @@
                 <a href="#mappa-villa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/mosca.png">
                     <div class="timeline-time">18:30</div>
-                    <div class="timeline-text">Aperitivo e Ricevimento, Villa Mosca</div>
+                    <div class="timeline-text"><b>Aperitivo e Ricevimento</b>, <br> Villa Mosca</div>
                 </a>
             </div>
             <div class="timeline-item">
                 <a href="#mappa-villa" class="timeline-content">
                     <img class="schedule-icon" src="./images/icons/calici.png">
                     <div class="timeline-time">22:00</div>
-                    <div class="timeline-text">Festa, Villa Mosca</div>
+                    <div class="timeline-text"><b>Festa</b>, <br> Villa Mosca</div>
                 </a>
             </div>
 
@@ -703,13 +703,15 @@
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.2028652976583!2d8.310063576552947!3d40.5591971469552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1e09622a5cf%3A0x8d3c58c73af662ab!2sParrocchia%20Cattedrale%20dell%E2%80%99Immacolata%20Concezione!5e0!3m2!1sit!2sit!4v1774877441897!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p>Parrocchia Cattedrale dell’Immacolata Concezione - Alghero</p>
+            <br>
+        <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> - Alghero</p>
 
         <iframe id="mappa-villa"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p>Villa Mosca - Alghero</p>
+            <br>
+        <p><b>Villa Mosca </b>- Alghero</p>
     </section>
 
     <section id="rsvp">
@@ -725,7 +727,7 @@
                     <input type="text" name="nome_cognome" required>
                 </div>
                 <div class="form_group">
-                    <label>Parteciperai?</label>
+                    <label>Parteciperai? *</label>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="presenza" value="si" required> Sì</label>
                         <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
@@ -736,7 +738,7 @@
                     <input type="text" name="piu_uno">
                 </div>
                 <div class="form_group">
-                    <label>Intolleranze e/o preferenze alimentari?</label>
+                    <label>Intolleranze e/o preferenze alimentari? *</label>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
                             Sì</label>
@@ -749,7 +751,7 @@
                 </div>
                 <div class="form_group">
                     <label>Messaggio agli sposi</label>
-                    <textarea name="messaggio" rows="3"></textarea>
+                    <textarea name="messaggio" rows="3" style="resize:none"></textarea>
                 </div>
                 <button type="submit" class="button">Conferma</button>
             </div>
@@ -761,7 +763,17 @@
             <img src="./images/icons/regalo.png" alt="Regalo">
         </div>
         <h2>Lista nozze</h2>
-        <p>La vostra presenza è il regalo più bello. Per chi volesse, abbiamo pensato a una lista.</p>
+        <p><i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra le
+                vette
+                delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo inizio. </i>
+                <br>
+                <br> Il vostro affetto è per noi il dono più prezioso.
+                <br>
+                <br> Se vorrete accompagnarci in questa avventura speciale,
+                lasciamo qui un modo per farlo:
+            <br>
+            <br> <b>IT52H0305801604100572428245</b>
+        </p>
     </section>
 
     <footer>
