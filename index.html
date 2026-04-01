@@ -252,7 +252,31 @@
             transform: scale(1.08);
         }
 
-        
+        .section-icon::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: #c9a96e;
+            opacity: 0.6;
+        }
+
+        .section-icon::after {
+            content: "";
+            position: absolute;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 1px;
+            background: #c9a96e;
+            opacity: 0.5;
+        }
+
+
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
