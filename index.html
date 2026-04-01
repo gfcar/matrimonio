@@ -666,6 +666,11 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        .intolleranze{
+            font-size: 12px;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -794,7 +799,7 @@
                     <input type="text" name="piu_uno">
                 </div>
                 <div class="form_group">
-                    <label>Ci sono bambini con te? *</label>
+                    <label>Porterai bambini/e con te? *</label>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="bambini" value="si" required>
                             Sì</label>
@@ -802,11 +807,15 @@
                     </div>
                 </div>
                 <div class="form_group" id="gruppo_bambini">
-                    <label>Quanti? *</label>
-                    <input type="text" name="specifica_bambini" id="input_bambini">
+                    <label>Si prega di indicare:
+                        <br> - Quanti/e bambini/bambini;
+                        <br> - Nome, cognome ed età di ognuno/a;
+                        <br> - Eventuali allergie o intolleranze</label>
+                    <textarea name="messaggio" rows="3" style="resize:none"></textarea>
                 </div>
                 <div class="form_group">
-                    <label>Intolleranze e/o preferenze alimentari? *</label>
+                    <label>Allergie, intolleranze o preferenze alimentari? *</label>
+                    <div class="intolleranze"> Tue o di eventuali accompagnatori/accompagnatrici</div>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
                             Sì</label>
@@ -818,7 +827,7 @@
                     <input type="text" name="specifica_intolleranze" id="input_specifica">
                 </div>
                 <div class="form_group">
-                    <label>Messaggio agli sposi</label>
+                    <label>Note per gli sposi</label>
                     <textarea name="messaggio" rows="3" style="resize:none"></textarea>
                 </div>
                 <button type="submit" class="button">Conferma</button>
