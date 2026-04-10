@@ -784,12 +784,16 @@
         </div>
         <h2>RSVP</h2>
         <p>Vi preghiamo di confermare la vostra partecipazione</p>
-        <form action="https://formspree.io/f/xkovnvrn" method="POST" class="form_matrimonio">
+        <form
+            action="https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec"
+            method="POST" class="form_matrimonio" id="form-matrimonio">
             <div class="conferma_container">
+
                 <div class="form_group">
                     <label>Nome e Cognome *</label>
                     <input type="text" name="nome_cognome" required>
                 </div>
+
                 <div class="form_group">
                     <label>Parteciperai? *</label>
                     <div class="radio_group">
@@ -797,43 +801,50 @@
                         <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
                     </div>
                 </div>
+
                 <div class="form_group">
                     <label>Accompagnatore/Accompagnatrice</label>
-                    <input type="text" name="piu_uno">
+                    <input type="text" name="piu_uno" placeholder="Nome e cognome">
                 </div>
+
                 <div class="form_group">
                     <label>Porterai bambini/e con te? *</label>
                     <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="bambini" value="si" required>
-                            Sì</label>
+                        <label class="radio_item"><input type="radio" name="bambini" value="si" required> Sì</label>
                         <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
                     </div>
                 </div>
+
                 <div class="form_group" id="gruppo_bambini">
-                    <label>Si prega di indicare:
-                        <br> - Quanti/e bambini/bambine;
-                        <br> - Nome, cognome ed età di ognuno/a;
-                        <br> - Eventuali allergie o intolleranze</label>
-                    <textarea name="messaggio" rows="3" style="resize:none"></textarea>
+                    <label>Dettagli Bambini (Numero, nomi, età, allergie)</label>
+                    <textarea name="dettagli_bambini" rows="3" style="resize:none"
+                        placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
                 </div>
+
                 <div class="form_group">
                     <label>Allergie, intolleranze o preferenze alimentari? *</label>
-                    <div class="intolleranze"> Tue o di eventuali accompagnatori/accompagnatrici</div>
+                    <div class="intolleranze">Tue o di eventuali accompagnatori</div>
                     <div class="radio_group">
                         <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
                             Sì</label>
                         <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
                     </div>
                 </div>
+
                 <div class="form_group" id="gruppo_specifica">
-                    <label>Specifica *</label>
+                    <label>Specifica allergie/intolleranze *</label>
                     <input type="text" name="specifica_intolleranze" id="input_specifica">
                 </div>
+
                 <div class="form_group">
                     <label>Note per gli sposi</label>
-                    <textarea name="messaggio" rows="3" style="resize:none"></textarea>
+                    <textarea name="note" rows="3" style="resize:none" placeholder="Scrivici qualcosa..."></textarea>
                 </div>
-                <button type="submit" class="button">Conferma</button>
+
+                <button type="submit" class="button" id="submit-btn">Invia Conferma</button>
+                <p id="messaggio-conferma" style="display:none; margin-top: 10px; color: #99af57; font-weight: bold;">
+                    Invio in corso... attendi un istante.
+                </p>
             </div>
         </form>
     </section>
@@ -1046,6 +1057,40 @@
                 arrow.style.transform = "rotate(0deg)";
             }
         }
+
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec';
+        const form = document.getElementById('form-matrimonio');
+        const btn = document.getElementById('submit-btn');
+        const msg = document.getElementById('messaggio-conferma');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Impedisce il ricaricamento della pagina
+
+            // Feedback visivo per l'utente
+            btn.disabled = true;
+            btn.innerText = "Invio...";
+            msg.style.display = "block";
+            msg.innerText = "Stiamo salvando la tua conferma...";
+
+            // Invio dei dati
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then(response => {
+                    msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
+                    btn.style.display = "none"; // Nasconde il tasto dopo l'invio
+                    form.reset(); // Svuota il form
+                })
+                .catch(error => {
+                    console.error('Errore!', error.message);
+                    msg.innerText = "Ops! C'è stato un errore. Riprova tra poco.";
+                    btn.disabled = false;
+                    btn.innerText = "Riprova";
+                });
+        });
+
     </script>
 
 </body>
