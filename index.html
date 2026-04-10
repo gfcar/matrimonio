@@ -127,6 +127,25 @@
             color: var(--sand);
         }
 
+        .nav-illustration {
+            margin-bottom: 40px;
+            opacity: 0.7;
+            transform: translateY(10px);
+            transition: all 0.6s ease;
+        }
+
+        .nav-illustration img {
+            width: 160px;
+            max-width: 60vw;
+            filter: contrast(1.05) brightness(0.95);
+        }
+
+        /* animazione quando il menu si apre */
+        .nav-menu.active .nav-illustration {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
         }
@@ -685,14 +704,19 @@
         <div class="menu-toggle" id="mobile-menu">
             <span></span><span></span><span></span>
         </div>
-
         <div class="nav-menu" id="nav-links">
+
+            <div class="nav-illustration">
+                <img src="./images/icons/lucy.png" alt="Illustrazione cane">
+            </div>
+
             <a href="#programma">Programma</a>
             <a href="#arrivare">Come Arrivare</a>
             <a href="#rsvp">RSVP</a>
             <a href="#lista">Lista Nozze</a>
             <a href="#scopri">Scopri Alghero</a>
         </div>
+
     </nav>
 
     <div class="hero-image-container"></div>
