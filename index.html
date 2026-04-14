@@ -490,18 +490,14 @@
         }
 
         footer {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
             margin-top: 100px;
-            padding: 40px 20px;
+            padding: 80px 20px;
             text-align: center;
             font-size: .65rem;
             color: var(--sand);
             text-transform: uppercase;
             letter-spacing: 4px;
         }
-
 
         /* TIMELINE PROGRAMMA */
         .timeline {
@@ -717,6 +713,90 @@
 
         .alghero-icon {
             opacity: 0.4
+        }
+
+        /* FOOTER PHOTO POLAROID */
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #a3b18a;
+        }
+
+        .footer-photo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .footer-photo-frame {
+            position: relative;
+            display: inline-block;
+            padding: 14px;
+            background: rgba(244, 243, 238, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 8px 32px rgba(45, 58, 45, 0.10);
+        }
+
+        .frame-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--sand);
+            border-style: solid;
+        }
+
+        .frame-corner--tl {
+            top: 4px;
+            left: 4px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .frame-corner--tr {
+            top: 4px;
+            right: 4px;
+            border-width: 1px 1px 0 0;
+        }
+
+        .frame-corner--bl {
+            bottom: 4px;
+            left: 4px;
+            border-width: 0 0 1px 1px;
+        }
+
+        .frame-corner--br {
+            bottom: 4px;
+            right: 4px;
+            border-width: 0 1px 1px 0;
+        }
+
+        .footer-photo {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            filter: sepia(0.12) contrast(0.97) brightness(1.01);
+        }
+
+        .footer-photo-caption {
+            margin-top: 10px;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sand);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        @media (min-width: 480px) {
+            .footer-photo {
+                max-width: 420px;
+            }
         }
     </style>
 </head>
@@ -997,26 +1077,18 @@
 
 
     <footer>
-        <div style="display: flex; justify-content: center;">
-            <div style="
-                padding: 15px; 
-                background: white; 
-                border: 1px solid #d4af37;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                line-height: 0;
-                display: inline-block;
-            ">
-                <img src="images/paris.jpeg" alt="Tommaso e Janira" style="
-                    max-width: 300px; 
-                    height: auto; 
-                    border: 1px solid #eee;
-                    display: block;
-                ">
+        <div class="footer-photo-wrapper">
+            <div class="footer-photo-frame">
+                <div class="frame-corner frame-corner--tl"></div>
+                <div class="frame-corner frame-corner--tr"></div>
+                <div class="frame-corner frame-corner--bl"></div>
+                <div class="frame-corner frame-corner--br"></div>
+                <img src="./images/paris.jpeg">
+                <div class="footer-photo-caption">Paris, 2025</div>
             </div>
         </div>
         Tommaso & Janira — 29.08.2026
     </footer>
-
 
     <script>
         /* LOGICA MENU MOBILE */
