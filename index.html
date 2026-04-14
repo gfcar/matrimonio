@@ -749,30 +749,10 @@
             border-color: var(--sand);
             border-style: solid;
         }
-
-        .frame-corner--tl {
-            top: 4px;
-            left: 4px;
-            border-width: 1px 0 0 1px;
-        }
-
-        .frame-corner--tr {
-            top: 4px;
-            right: 4px;
-            border-width: 1px 1px 0 0;
-        }
-
-        .frame-corner--bl {
-            bottom: 4px;
-            left: 4px;
-            border-width: 0 0 1px 1px;
-        }
-
-        .frame-corner--br {
-            bottom: 4px;
-            right: 4px;
-            border-width: 0 1px 1px 0;
-        }
+        .frame-corner--tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
+        .frame-corner--tr { top: 4px; right: 4px; border-width: 1px 1px 0 0; }
+        .frame-corner--bl { bottom: 4px; left: 4px; border-width: 0 0 1px 1px; }
+        .frame-corner--br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
 
         .footer-photo {
             display: block;
@@ -794,10 +774,9 @@
         }
 
         @media (min-width: 480px) {
-            .footer-photo {
-                max-width: 420px;
-            }
+            .footer-photo { max-width: 420px; }
         }
+
     </style>
 </head>
 
@@ -1078,14 +1057,14 @@
 
     <footer>
         <div class="footer-photo-wrapper">
-            <div class="footer-photo-frame">
-                <div class="frame-corner frame-corner--tl"></div>
-                <div class="frame-corner frame-corner--tr"></div>
-                <div class="frame-corner frame-corner--bl"></div>
-                <div class="frame-corner frame-corner--br"></div>
-                <img src="./images/paris.jpeg">
-                <div class="footer-photo-caption">Paris, 2025</div>
-            </div>
+          <div class="footer-photo-frame">
+            <div class="frame-corner frame-corner--tl"></div>
+            <div class="frame-corner frame-corner--tr"></div>
+            <div class="frame-corner frame-corner--bl"></div>
+            <div class="frame-corner frame-corner--br"></div>
+            <img src="./images/paris.jpeg" alt="Tommaso Janira a Parigi" class="footer-photo">
+            <div class="footer-photo-caption">Paris, 2025</div>
+          </div>
         </div>
         Tommaso & Janira — 29.08.2026
     </footer>
