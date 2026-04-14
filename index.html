@@ -28,18 +28,32 @@
             font-weight: 300;
         }
 
-        /* DECORAZIONE MIRTO */
         body::after {
             content: "";
             position: fixed;
-            bottom: -40px;
-            right: -20px;
-            width: 260px;
-            height: 380px;
-            background: url("./images/mirto.png") no-repeat;
-            background-size: contain;
-            opacity: 0.12;
+            inset: 0;
+            background: url("./images/sfondo.png") no-repeat center;
+            background-size: 95%;
+            opacity: 0.5;
             pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            body::after {
+                background-size: contain;
+                background-position: center;
+                opacity: 0.6;
+                /* un filo più visibile su mobile */
+            }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(244, 244, 240, 0.55);
+            /* velo */
             z-index: -1;
         }
 
