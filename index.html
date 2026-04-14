@@ -490,14 +490,18 @@
         }
 
         footer {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
             margin-top: 100px;
-            padding: 80px 20px;
+            padding: 40px 20px;
             text-align: center;
             font-size: .65rem;
             color: var(--sand);
             text-transform: uppercase;
             letter-spacing: 4px;
         }
+
 
         /* TIMELINE PROGRAMMA */
         .timeline {
@@ -993,8 +997,26 @@
 
 
     <footer>
+        <div style="display: flex; justify-content: center;">
+            <div style="
+                padding: 15px; 
+                background: white; 
+                border: 1px solid #d4af37;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                line-height: 0;
+                display: inline-block;
+            ">
+                <img src="images/paris.jpeg" alt="Tommaso e Janira" style="
+                    max-width: 300px; 
+                    height: auto; 
+                    border: 1px solid #eee;
+                    display: block;
+                ">
+            </div>
+        </div>
         Tommaso & Janira — 29.08.2026
     </footer>
+
 
     <script>
         /* LOGICA MENU MOBILE */
