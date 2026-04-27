@@ -18,50 +18,47 @@
             box-sizing: border-box;
         }
 
+        /* PALETTE */
+        :root {
+            --sand: #c8b89a;
+            --sand-light: #e8dfd0;
+            --sand-xlight: rgba(200, 184, 154, 0.12);
+            --dark-green: #243024;
+            --text: #2d3a2d;
+            --bg: #f4f4f0;
+            --sage: #a3b18a;
+            --gold: #c9a96e;
+            --gold-text: #dab12ee3;
+        }
+
         /* BODY */
         body {
             font-family: 'Montserrat', sans-serif;
-            color: #2d3a2d;
-            background: #f4f4f0;
+            color: var(--text);
+            background: var(--bg);
             line-height: 1.8;
             scroll-behavior: smooth;
             font-weight: 300;
         }
 
+        /* Sfondo watermark */
         body::after {
             content: "";
             position: fixed;
             inset: 0;
-            background: url("./images/sfondo.png") no-repeat center;
-            background-size: 95%;
+            background: url("./images/sfondo.png") no-repeat center / 95%;
             opacity: 1;
             pointer-events: none;
             z-index: -1;
         }
 
-        @media (max-width: 768px) {
-            body::after {
-                background-size: contain;
-                background-position: center;
-                opacity: 0.6;
-                /* un filo più visibile su mobile */
-            }
-        }
-
+        /* Velo sopra sfondo */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             background: rgba(244, 244, 240, 0.55);
-            /* velo */
             z-index: -1;
-        }
-
-        /* PALETTE SABBIA LINO */
-        :root {
-            --sand: #c8b89a;
-            --sand-light: #e8dfd0;
-            --sand-xlight: rgba(200, 184, 154, 0.12);
         }
 
         /* NAV */
@@ -84,7 +81,7 @@
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
-            color: #243024;
+            color: var(--dark-green);
             text-decoration: none;
             position: absolute;
             left: 12%;
@@ -103,8 +100,20 @@
         .menu-toggle span {
             width: 22px;
             height: 1px;
-            background: #a3b18a;
+            background: var(--sage);
             transition: 0.3s;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
 
         .nav-menu {
@@ -113,7 +122,7 @@
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: #f4f4f0;
+            background: var(--bg);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -129,7 +138,7 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #243024;
+            color: var(--dark-green);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -140,7 +149,6 @@
         .nav-menu a:hover {
             color: var(--sand);
         }
-
 
         .nav-illustration {
             display: block;
@@ -161,26 +169,14 @@
             transform: translateY(0);
         }
 
-        .menu-toggle.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        /* HERO IMAGE */
+        /* HERO */
         .hero-image-container {
             position: relative;
             width: 100%;
             height: 66.7vw;
             max-height: 80vh;
             margin-top: 70px;
-            background: url("./images/villa.png") center/cover no-repeat;
+            background: url("./images/villa.png") center / cover no-repeat;
         }
 
         .hero-image-container::after {
@@ -190,7 +186,7 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(to bottom, transparent, #f4f4f0);
+            background: linear-gradient(to bottom, transparent, var(--bg));
         }
 
         /* HEADER */
@@ -203,7 +199,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.3rem;
             font-weight: 400;
-            color: #243024;
+            color: var(--dark-green);
             line-height: 1.2;
         }
 
@@ -211,7 +207,7 @@
             margin-top: 10px;
             letter-spacing: 5px;
             font-size: 1rem;
-            color: #dab12ee3;
+            color: var(--gold-text);
             text-transform: uppercase;
         }
 
@@ -223,21 +219,21 @@
             gap: 20px;
         }
 
-        .countdown span {
-            display: block;
-            font-size: 3.6rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: #243024;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
         .countdown div {
             text-align: center;
             font-size: .6rem;
             color: #99af57;
             text-transform: uppercase;
             letter-spacing: 2px;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 3.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dark-green);
+            line-height: 1;
+            margin-bottom: 8px;
         }
 
         /* SEZIONI */
@@ -249,7 +245,6 @@
             background: rgba(244, 243, 238, 0.45);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            border: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
             mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
@@ -271,22 +266,7 @@
             justify-content: center;
             width: 64px;
             height: 64px;
-            border-radius: 50%;
-            background: none;
-            border: none;
             margin-bottom: 22px;
-            transition: transform 0.4s ease, background 0.4s ease;
-            transform: scale(1.08);
-        }
-
-        .section-icon img {
-            width: 60px;
-            height: 60px;
-            filter: contrast(1.1) brightness(0.95);
-            transform: scale(1.08);
-        }
-
-        .section-icon {
             position: relative;
             z-index: 1;
         }
@@ -301,21 +281,26 @@
             z-index: -1;
         }
 
-
+        .section-icon img {
+            width: 60px;
+            height: 60px;
+            filter: contrast(1.1) brightness(0.95);
+            transform: scale(1.08);
+        }
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 25px;
-            color: #243024;
+            color: var(--dark-green);
         }
 
         h2::after {
             content: "";
             width: 30px;
             height: 1px;
-            background: #a3b18a;
+            background: var(--sage);
             display: block;
             margin: 20px auto 0;
             opacity: 0.6;
@@ -325,9 +310,9 @@
         .button {
             margin-top: 30px;
             padding: 15px 50px;
-            border: 1px solid #a3b18a;
+            border: 1px solid var(--sage);
             background: transparent;
-            color: #a3b18a;
+            color: var(--sage);
             cursor: pointer;
             transition: all 0.5s;
             text-transform: uppercase;
@@ -336,8 +321,8 @@
         }
 
         .button:hover {
-            background: #a3b18a;
-            color: #243024;
+            background: var(--sage);
+            color: var(--dark-green);
         }
 
         iframe {
@@ -372,7 +357,7 @@
             font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #2d3a2d;
+            color: var(--text);
         }
 
         .form_group input,
@@ -388,7 +373,7 @@
 
         .form_group input:focus,
         .form_group textarea:focus {
-            border-color: #c9a96e;
+            border-color: var(--gold);
             box-shadow: 0 0 6px rgba(201, 169, 110, 0.4);
             outline: none;
         }
@@ -399,132 +384,57 @@
             margin-top: 5px;
         }
 
+        .radio_group input[type="radio"] {
+            accent-color: var(--gold);
+            cursor: pointer;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+
+        .radio_group input[type="radio"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
+        }
+
         .radio_item {
             font-size: 0.75rem;
             display: flex;
             align-items: center;
             gap: 5px;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        /* LOGICA VISIBILITÀ SPECIFICA */
-        #gruppo_specifica {
-            display: none;
+        .radio_item:hover {
+            color: var(--gold);
         }
 
+        #gruppo_specifica,
         #gruppo_bambini {
             display: none;
         }
 
-        @media (min-width: 768px) {
-            nav {
-                justify-content: space-between;
-                padding: 0 40px;
-            }
-
-            .nav-logo {
-                position: static;
-                transform: none;
-                left: auto;
-                font-size: 1.8rem;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
-
-            .nav-menu {
-                position: static;
-                height: auto;
-                width: auto;
-                background: transparent;
-                flex-direction: row;
-                gap: 35px;
-            }
-
-            .nav-menu a {
-                font-size: 0.7rem;
-                letter-spacing: 3px;
-            }
-
-            header h1 {
-                font-size: 2.3rem;
-            }
-
-            .countdown {
-                gap: 60px;
-            }
-
-            .countdown span {
-                font-size: 3.5rem;
-                margin-bottom: 10px;
-            }
-
-            section {
-                max-width: 850px;
-                padding: 100px 80px;
-            }
-
-            .form_matrimonio {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            @media (min-width: 768px) {
-                .nav-illustration {
-                    display: none !important;
-                }
-            }
+        .intolleranze {
+            font-size: 12px;
+            text-decoration: underline;
         }
 
-        /* ATTRIBUZIONE / FOOTER */
-        .attribution {
-            font-size: 0.6rem;
-            color: var(--sand);
-            margin-top: 60px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .attribution a {
-            color: var(--sand);
-        }
-
-        footer {
-            margin-top: 100px;
-            padding: 80px 20px;
-            text-align: center;
-            font-size: .65rem;
-            color: var(--sand);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        /* TIMELINE PROGRAMMA */
+        /* TIMELINE */
         .timeline {
             position: relative;
             margin-top: 60px;
             padding: 40px 0;
         }
 
-        /* linea centrale */
         .timeline::before {
             content: "";
             position: absolute;
             top: 0;
             left: 50%;
             width: 1px;
-            /* più sottile */
             height: 0;
             transform: translateX(-50%);
-
-            /* colore elegante */
-            background: linear-gradient(to bottom,
-                    transparent,
-                    #a3b18a,
-                    #a3b18a,
-                    transparent);
-
-            /* animazione disegno */
+            background: linear-gradient(to bottom, transparent, var(--sage), var(--sage), transparent);
             transition: height 1.8s ease;
             z-index: 1;
         }
@@ -533,20 +443,55 @@
             height: 100%;
         }
 
-        /* BLOCCO */
+        /* Shimmer overlay */
+        .timeline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+            opacity: 0;
+            animation: shimmer 2.5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .timeline.visible::after {
+            opacity: 0.6;
+        }
+
         .timeline-item {
             position: relative;
             width: 100%;
         }
 
-        /* CONTENUTO */
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--sage);
+            border-radius: 50%;
+            transform: translateX(-50%) scale(0);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            z-index: 2;
+        }
+
+        .timeline-item.visible::after {
+            transform: translateX(-50%) scale(1);
+            box-shadow: 0 0 0 4px var(--bg), 0 0 10px rgba(163, 177, 138, 0.6);
+        }
+
         .timeline-content {
             width: 42%;
             text-align: center;
             text-decoration: none;
-            /* Rimuove sottolineatura link */
             display: block;
-            /* Rende tutta l'area cliccabile */
             transition: transform 0.3s ease;
         }
 
@@ -558,7 +503,6 @@
             width: 90px;
         }
 
-        /* alternanza */
         .timeline-item:nth-child(odd) .timeline-content {
             margin-left: 0;
             margin-right: auto;
@@ -569,30 +513,6 @@
             margin-right: 0;
         }
 
-        /* PUNTO CENTRALE */
-        .timeline-item::after {
-            content: "";
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: #a3b18a;
-            border-radius: 50%;
-            transform: translateX(-50%) scale(0);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            z-index: 2;
-        }
-
-        .timeline-item.visible::after {
-            transform: translateX(-50%) scale(1);
-            box-shadow:
-                0 0 0 4px #f4f4f0,
-                /* stacca dalla linea */
-                0 0 10px rgba(163, 177, 138, 0.6);
-        }
-
-        /* IMMAGINE */
         .timeline-content img {
             width: 100%;
             border-radius: 4px;
@@ -606,67 +526,19 @@
             transform: translateY(0);
         }
 
-        /* TESTI */
         .timeline-time {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
-            color: #243024;
+            color: var(--dark-green);
         }
 
         .timeline-text {
             line-height: 15px;
             font-size: 0.8rem;
-            color: #2d3a2d;
+            color: var(--text);
         }
 
-        .timeline::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 3px;
-            height: 100%;
-            transform: translateX(-50%);
-
-            background: linear-gradient(to bottom,
-                    transparent,
-                    rgba(255, 255, 255, 0.8),
-                    transparent);
-
-            opacity: 0;
-            animation: shimmer 2.5s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .timeline.visible::after {
-            opacity: 0.6;
-        }
-
-        .radio_group input[type="radio"] {
-            accent-color: #c9a96e;
-            cursor: pointer;
-            transform: scale(1.1);
-            vertical-align: middle;
-            outline: none;
-        }
-
-        .radio_group input[type="radio"]:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(201, 169, 110, 0.5);
-        }
-
-        .radio_item {
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        /* Opzionale: cambia colore al testo dell'etichetta quando passi sopra */
-        .radio_item:hover {
-            color: #c9a96e;
-        }
-
-
+        /* GUIDA ALGHERO */
         .guide-container {
             text-align: left;
             display: grid;
@@ -677,7 +549,7 @@
         .guide-category h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
-            color: #243024;
+            color: var(--dark-green);
             border-bottom: 1px solid var(--sand-light);
             margin-bottom: 10px;
         }
@@ -696,33 +568,23 @@
         }
 
         .price-tag {
-            color: #c9a96e;
+            color: var(--gold);
             font-weight: 400;
         }
 
-        @media (min-width: 600px) {
-            .guide-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .intolleranze {
-            font-size: 12px;
-            text-decoration: underline;
-        }
-
         .alghero-icon {
-            opacity: 0.4
+            opacity: 0.4;
         }
 
-        /* FOOTER PHOTO POLAROID */
+        /* FOOTER */
         footer {
-            text-align: center;
+            margin-top: 100px;
             padding: 60px 20px 40px;
-            font-size: 0.7rem;
-            letter-spacing: 4px;
+            text-align: center;
+            font-size: .65rem;
+            color: var(--sand);
             text-transform: uppercase;
-            color: #a3b18a;
+            letter-spacing: 4px;
         }
 
         .footer-photo-wrapper {
@@ -793,45 +655,11 @@
             text-align: center;
         }
 
-        @media (min-width: 480px) {
-            .footer-photo {
-                max-width: 420px;
-            }
-        }
-
+        /* LOGIN */
         #password-screen {
             position: fixed;
             inset: 0;
-            background: #f4f4f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .password-box {
-            text-align: center;
-        }
-
-        .password-box input {
-            padding: 10px;
-            margin-top: 10px;
-            border: 1px solid #a3b18a;
-        }
-
-        .password-box button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: 1px solid #a3b18a;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        /* LOGIN ELEGANTE */
-        #password-screen {
-            position: fixed;
-            inset: 0;
-            background: #f4f4f0;
+            background: var(--bg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -847,7 +675,7 @@
         .login-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
-            color: #243024;
+            color: var(--dark-green);
             font-weight: 400;
         }
 
@@ -855,14 +683,14 @@
             margin-top: 5px;
             letter-spacing: 4px;
             font-size: 0.7rem;
-            color: #c9a96e;
+            color: var(--gold);
             text-transform: uppercase;
         }
 
         .login-divider {
             width: 30px;
             height: 1px;
-            background: #a3b18a;
+            background: var(--sage);
             margin: 25px auto;
             opacity: 0.6;
         }
@@ -887,15 +715,15 @@
 
         .password-box input:focus {
             outline: none;
-            border-color: #c9a96e;
+            border-color: var(--gold);
             box-shadow: 0 0 6px rgba(201, 169, 110, 0.3);
         }
 
         .login-button {
             padding: 12px 40px;
-            border: 1px solid #a3b18a;
+            border: 1px solid var(--sage);
             background: transparent;
-            color: #a3b18a;
+            color: var(--sage);
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.7rem;
@@ -904,14 +732,90 @@
         }
 
         .login-button:hover {
-            background: #a3b18a;
-            color: #243024;
+            background: var(--sage);
+            color: var(--dark-green);
         }
 
         .login-error {
             margin-top: 10px;
             font-size: 0.7rem;
             color: #a44a3f;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            body::after {
+                background-size: contain;
+                background-position: center;
+                opacity: 0.6;
+            }
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                justify-content: space-between;
+                padding: 0 40px;
+            }
+
+            .nav-logo {
+                position: static;
+                transform: none;
+                left: auto;
+                font-size: 1.8rem;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                position: static;
+                height: auto;
+                width: auto;
+                background: transparent;
+                flex-direction: row;
+                gap: 35px;
+            }
+
+            .nav-menu a {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+            }
+
+            .nav-illustration {
+                display: none !important;
+            }
+
+            header h1 {
+                font-size: 2.3rem;
+            }
+
+            .countdown {
+                gap: 60px;
+            }
+
+            .countdown span {
+                font-size: 3.5rem;
+                margin-bottom: 10px;
+            }
+
+            section {
+                max-width: 850px;
+                padding: 100px 80px;
+            }
+
+            .form_matrimonio {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .guide-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-photo {
+                max-width: 420px;
+            }
         }
     </style>
 </head>
@@ -920,48 +824,35 @@
 
     <div id="password-screen">
         <div class="password-box">
-            <div class="password-box">
-                <h1 class="login-title">Tommaso & Janira</h1>
-                <p class="login-subtitle">29 Agosto 2026 • Alghero</p>
-
-                <div class="login-divider"></div>
-
-                <p class="login-text">
-                    Questo invito è dedicato a voi.<br>
-                    Inserite la parola segreta per scoprire tutti i dettagli
-                </p>
-
-                <input type="password" id="password-input" placeholder="Parola segreta">
-
-                <button onclick="checkPassword()" class="login-button">
-                    Entra
-                </button>
-
-                <p id="error-msg" class="login-error"></p>
-            </div>
+            <h1 class="login-title">Tommaso & Janira</h1>
+            <p class="login-subtitle">29 Agosto 2026 • Alghero</p>
+            <div class="login-divider"></div>
+            <p class="login-text">
+                Questo invito è dedicato a voi.<br>
+                Inserite la parola segreta per scoprire tutti i dettagli
+            </p>
+            <input type="password" id="password-input" placeholder="Parola segreta">
+            <button onclick="checkPassword()" class="login-button">Entra</button>
+            <p id="error-msg" class="login-error"></p>
         </div>
     </div>
 
     <div id="site-content" style="display:none;">
         <nav>
             <a href="#" class="nav-logo">T & J</a>
-
             <div class="menu-toggle" id="mobile-menu">
                 <span></span><span></span><span></span>
             </div>
             <div class="nav-menu" id="nav-links">
-
                 <div class="nav-illustration">
                     <img src="./images/icons/lucy.png" alt="Illustrazione cane">
                 </div>
-
                 <a href="#programma">Programma</a>
                 <a href="#arrivare">Come Arrivare</a>
                 <a href="#rsvp">RSVP</a>
                 <a href="#lista">Lista Nozze</a>
                 <a href="#scopri">Scopri Alghero</a>
             </div>
-
         </nav>
 
         <div class="hero-image-container"></div>
@@ -969,7 +860,6 @@
         <header>
             <h1>Tommaso & Janira</h1>
             <p>29 Agosto 2026 • Alghero</p>
-
             <div class="countdown">
                 <div><span id="days"></span>Giorni</div>
                 <div><span id="hours"></span>Ore</div>
@@ -982,45 +872,38 @@
             <div class="section-icon">
                 <img src="./images/icons/programma.png" alt="Programma">
             </div>
-
             <h2>Programma</h2>
-
             <div class="timeline">
-
                 <div class="timeline-item">
                     <a href="#mappa-chiesa" class="timeline-content">
                         <img class="schedule-icon" src="./images/icons/chiesa.png">
                         <div class="timeline-time">16:00</div>
-                        <div class="timeline-text"><b>Ritrovo</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
+                        <div class="timeline-text"><b>Ritrovo</b>,<br>Parrocchia Cattedrale dell'Immacolata Concezione
                         </div>
                     </a>
                 </div>
-
                 <div class="timeline-item">
                     <a href="#mappa-chiesa" class="timeline-content">
                         <img class="schedule-icon" src="./images/icons/anelli.png">
                         <div class="timeline-time">16:30</div>
-                        <div class="timeline-text"><b>Cerimonia</b>, <br> Parrocchia Cattedrale dell'Immacolata
-                            Concezione
+                        <div class="timeline-text"><b>Cerimonia</b>,<br>Parrocchia Cattedrale dell'Immacolata Concezione
                         </div>
                     </a>
                 </div>
-
                 <div class="timeline-item">
                     <a href="#mappa-villa" class="timeline-content">
                         <img class="schedule-icon" src="./images/icons/mosca.png">
                         <div class="timeline-time">18:30</div>
-                        <div class="timeline-text"><b>Aperitivo e Ricevimento</b>, <br> Villa Mosca</div>
+                        <div class="timeline-text"><b>Aperitivo e Ricevimento</b>,<br>Villa Mosca</div>
                     </a>
                 </div>
                 <div class="timeline-item">
                     <a href="#mappa-villa" class="timeline-content">
                         <img class="schedule-icon" src="./images/icons/calici.png">
                         <div class="timeline-time">22:00</div>
-                        <div class="timeline-text"><b>Festa</b>, <br> Villa Mosca</div>
+                        <div class="timeline-text"><b>Festa</b>,<br>Villa Mosca</div>
                     </a>
                 </div>
-
             </div>
         </section>
 
@@ -1029,23 +912,17 @@
                 <img src="./images/icons/pin.png" alt="Pin">
             </div>
             <h2>Come arrivare</h2>
-
             <iframe id="mappa-chiesa"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.2028652976583!2d8.310063576552947!3d40.5591971469552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1e09622a5cf%3A0x8d3c58c73af662ab!2sParrocchia%20Cattedrale%20dell%E2%80%99Immacolata%20Concezione!5e0!3m2!1sit!2sit!4v1774877441897!5m2!1sit!2sit"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <br>
-            <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> <br> Piazza Duomo 2, 07041, Alghero</p>
-            <br>
-            <br>
+            <p><b>Parrocchia Cattedrale dell'Immacolata Concezione</b><br>Piazza Duomo 2, 07041, Alghero</p>
+            <br><br>
             <iframe id="mappa-villa"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <br>
-            <p><b>Villa Mosca </b>
-                <br> Via Antonio Gramsci 17, 07041, Alghero
-            </p>
+            <p><b>Villa Mosca</b><br>Via Antonio Gramsci 17, 07041, Alghero</p>
         </section>
 
         <section id="rsvp">
@@ -1058,12 +935,10 @@
                 action="https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec"
                 method="POST" class="form_matrimonio" id="form-matrimonio">
                 <div class="conferma_container">
-
                     <div class="form_group">
                         <label>Nome e Cognome *</label>
                         <input type="text" name="nome_cognome" required>
                     </div>
-
                     <div class="form_group">
                         <label>Parteciperai? *</label>
                         <div class="radio_group">
@@ -1072,12 +947,10 @@
                             <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
                         </div>
                     </div>
-
                     <div class="form_group">
                         <label>Accompagnatore/Accompagnatrice</label>
                         <input type="text" name="piu_uno" placeholder="Nome e cognome">
                     </div>
-
                     <div class="form_group">
                         <label>Porterai bambini/e con te? *</label>
                         <div class="radio_group">
@@ -1085,13 +958,11 @@
                             <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
                         </div>
                     </div>
-
                     <div class="form_group" id="gruppo_bambini">
                         <label>Dettagli Bambini (Numero, nomi, età, allergie)</label>
                         <textarea name="dettagli_bambini" rows="3" style="resize:none"
                             placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
                     </div>
-
                     <div class="form_group">
                         <label>Allergie, intolleranze o preferenze alimentari? *</label>
                         <div class="intolleranze">Tue o di eventuali accompagnatori</div>
@@ -1101,22 +972,18 @@
                             <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
                         </div>
                     </div>
-
                     <div class="form_group" id="gruppo_specifica">
                         <label>Specifica allergie/intolleranze *</label>
                         <input type="text" name="specifica_intolleranze" id="input_specifica">
                     </div>
-
                     <div class="form_group">
                         <label>Note per gli sposi</label>
                         <textarea name="note" rows="3" style="resize:none"
                             placeholder="Scrivici qualcosa..."></textarea>
                     </div>
-
                     <button type="submit" class="button" id="submit-btn">Invia Conferma</button>
                     <p id="messaggio-conferma"
-                        style="display:none; margin-top: 10px; color: #99af57; font-weight: bold; font-family: 'Montserrat', sans-serif;">
-                        Invio in corso... attendi un istante.
+                        style="display:none; margin-top:10px; color:#99af57; font-weight:bold; font-family:'Montserrat',sans-serif;">
                     </p>
                 </div>
             </form>
@@ -1127,16 +994,17 @@
                 <img src="./images/icons/regalo.png" alt="Regalo">
             </div>
             <h2>Lista nozze</h2>
-            <p><i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra le
-                    vette
-                    delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo inizio. </i>
-                <br>
-                <br> Il vostro affetto è per noi il dono più prezioso.
-                <br>
-                <br> Se vorrete accompagnarci in questa avventura speciale,
-                lasciamo qui un modo per farlo:
-                <br>
-                <br> <b>IT52H0305801604100572428245</b>
+            <p>
+                <i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra
+                    le
+                    vette delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo
+                    inizio.</i>
+                <br><br>
+                Il vostro affetto è per noi il dono più prezioso.
+                <br><br>
+                Se vorrete accompagnarci in questa avventura speciale, lasciamo qui un modo per farlo:
+                <br><br>
+                <b>IT52H0305801604100572428245</b>
             </p>
         </section>
 
@@ -1144,17 +1012,15 @@
             <div class="section-icon">
                 <img class="alghero-icon" src="./images/icons/alghero.png" alt="Scopri">
             </div>
-
-            <div class="accordion-header" onclick="toggleAlghero()" style="cursor: pointer;">
+            <div class="accordion-header" onclick="toggleAlghero()" style="cursor:pointer;">
                 <h2>Scopri Alghero <span id="accordion-arrow"
-                        style="display: inline-block; transition: transform 0.3s ease; font-size: 1.5rem; vertical-align: middle; margin-left: 10px;">↓</span>
+                        style="display:inline-block; transition:transform 0.3s ease; font-size:1.5rem; vertical-align:middle; margin-left:10px;">↓</span>
                 </h2>
                 <p><i>I nostri consigli per il vostro soggiorno</i></p>
             </div>
-
             <div id="accordion-content"
-                style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; opacity: 0;">
-                <div class="guide-container" style="padding-top: 40px;">
+                style="max-height:0; overflow:hidden; transition:max-height 0.5s ease-out; opacity:0;">
+                <div class="guide-container" style="padding-top:40px;">
                     <div class="guide-category">
                         <h3>🌊 Il Mare</h3>
                         <ul class="guide-list">
@@ -1164,39 +1030,35 @@
                             <li>Giro delle calette</li>
                         </ul>
                     </div>
-
                     <div class="guide-category">
                         <h3>🍸 Aperitivo</h3>
                         <ul class="guide-list">
                             <li><b>Villa Mosca</b></li>
                             <li><b>Riservato</b></li>
                             <li><b>Bahia</b></li>
-                            <li><b>Rifugio di Mare</b> </li>
-                            <li><b>Bar di Porto Ferro</b> </li>
+                            <li><b>Rifugio di Mare</b></li>
+                            <li><b>Bar di Porto Ferro</b></li>
                         </ul>
                     </div>
-
                     <div class="guide-category">
                         <h3>🍤 Dove Mangiare</h3>
                         <ul class="guide-list">
-                            <li><span>Focaccia dal Milese</span> <span class="price-tag"></span></li>
-                            <li><span>Ballarini </span> <span class="price-tag"></span></li>
-                            <li><span>Bella Napoli</span> <span class="price-tag"></span></li>
-                            <li><span>Musciora / Nautilus</span> <span class="price-tag"></span></li>
-                            <li><span>La Piccola Cucina</span> <span class="price-tag"></span></li>
+                            <li>Focaccia dal Milese</li>
+                            <li>Ballarini</li>
+                            <li>Bella Napoli</li>
+                            <li>Musciora / Nautilus</li>
+                            <li>La Piccola Cucina</li>
                         </ul>
                     </div>
-
                     <div class="guide-category">
                         <h3>🍦 Tipici & Gelato</h3>
                         <ul class="guide-list">
-                            <li><b>Sa Mandra</b> </li>
+                            <li><b>Sa Mandra</b></li>
                             <li><b>Agriturismo Barbagia</b></li>
-                            <li><b>Golositas</b> </li>
+                            <li><b>Golositas</b></li>
                             <li><b>Re Gelato</b></li>
                         </ul>
                     </div>
-
                     <div class="guide-category">
                         <h3>🌅 Da non perdere</h3>
                         <ul class="guide-list">
@@ -1205,7 +1067,6 @@
                             <li>Torre del Porticciolo</li>
                         </ul>
                     </div>
-
                     <div class="guide-category">
                         <h3>🍷 Cantine</h3>
                         <ul class="guide-list">
@@ -1217,7 +1078,6 @@
                 </div>
             </div>
         </section>
-
 
         <footer>
             <div class="footer-photo-wrapper">
@@ -1232,170 +1092,133 @@
             </div>
             Tommaso & Janira — 29.08.2026
         </footer>
-
-        <script>
-            /* LOGICA MENU MOBILE */
-            const menuToggle = document.getElementById('mobile-menu');
-            const navLinks = document.getElementById('nav-links');
-            const links = document.querySelectorAll('.nav-menu a');
-
-            menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('open');
-                navLinks.classList.toggle('active');
-            });
-
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menuToggle.classList.remove('open');
-                    navLinks.classList.remove('active');
-                });
-            });
-
-            /* ANIMAZIONI SCROLL */
-            const sections = document.querySelectorAll('section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) e.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(s => observer.observe(s));
-
-            /* COUNTDOWN */
-            const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const d = weddingDate - now;
-                if (d > 0) {
-                    document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-                    document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
-                    document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
-                    document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
-                }
-            }, 1000);
-
-            /* TIMELINE ANIMAZIONE */
-            const timeline = document.querySelector('.timeline');
-            const timelineItems = document.querySelectorAll('.timeline-item');
-
-            const timelineObserver = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        timeline.classList.add('visible');
-                        timelineItems.forEach((item, i) => {
-                            setTimeout(() => item.classList.add('visible'), i * 300);
-                        });
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            timelineObserver.observe(timeline);
-
-            /* LOGICA CONDIZIONALE INTOLLERANZE */
-            const radioIntolleranze = document.querySelectorAll('input[name="intolleranze"]');
-            const gruppoSpecifica = document.getElementById('gruppo_specifica');
-            const inputSpecifica = document.getElementById('input_specifica');
-
-            radioIntolleranze.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    if (radio.value === 'si' && radio.checked) {
-                        gruppoSpecifica.style.display = 'flex';
-                        inputSpecifica.required = true;
-                    } else {
-                        gruppoSpecifica.style.display = 'none';
-                        inputSpecifica.required = false;
-                        inputSpecifica.value = ''; // Pulisce il campo se l'utente cambia idea
-                    }
-                });
-            });
-
-            const radioBambini = document.querySelectorAll('input[name="bambini"]');
-            const gruppoBambini = document.getElementById('gruppo_bambini');
-            const inputBambini = document.getElementById('input_bambini');
-
-            radioBambini.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    if (radio.value === 'si' && radio.checked) {
-                        gruppoBambini.style.display = 'flex';
-                        inputBambini.required = true;
-                    } else {
-                        gruppoBambini.style.display = 'none';
-                        inputBambini.required = false;
-                        inputBambini.value = ''; // Pulisce il campo se l'utente cambia idea
-                    }
-                });
-            });
-
-            function toggleAlghero() {
-                const content = document.getElementById('accordion-content');
-                const arrow = document.getElementById('accordion-arrow');
-
-                if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    content.style.opacity = "1";
-                    arrow.style.transform = "rotate(180deg)";
-                } else {
-                    content.style.maxHeight = "0px";
-                    content.style.opacity = "0";
-                    arrow.style.transform = "rotate(0deg)";
-                }
-            }
-
-
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec';
-            const form = document.getElementById('form-matrimonio');
-            const btn = document.getElementById('submit-btn');
-            const msg = document.getElementById('messaggio-conferma');
-
-            form.addEventListener('submit', e => {
-                e.preventDefault(); // Impedisce il ricaricamento della pagina
-
-                // Feedback visivo per l'utente
-                btn.disabled = true;
-                btn.innerText = "Invio...";
-                msg.style.display = "block";
-                msg.innerText = "Stiamo salvando la tua conferma...";
-
-                // Invio dei dati
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                    .then(response => {
-                        msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
-                        btn.style.display = "none"; // Nasconde il tasto dopo l'invio
-                        form.reset(); // Svuota il form
-                    })
-                    .catch(error => {
-                        console.error('Errore!', error.message);
-                        msg.innerText = "Ops! C'è stato un errore. Riprova tra poco.";
-                        msg.style.color = "#a44a3f"; // rosso mattone elegante
-                        btn.disabled = false;
-                        btn.innerText = "Riprova";
-                    });
-            });
-
-            const PASSWORD = "LUCY"; // <-- cambia qui
-
-            function checkPassword() {
-                const input = document.getElementById("password-input").value;
-                const error = document.getElementById("error-msg");
-
-                if (input === PASSWORD) {
-                    document.getElementById("password-screen").style.display = "none";
-                    document.getElementById("site-content").style.display = "block";
-                } else {
-                    error.innerText = "Password errata";
-                }
-            }
-            document.getElementById("password-input")
-                .addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        checkPassword();
-                    }
-                });
-        </script>
     </div>
+
+    <script>
+        /* PASSWORD */
+        const PASSWORD = "LUCY";
+
+        function checkPassword() {
+            const input = document.getElementById("password-input").value;
+            if (input === PASSWORD) {
+                document.getElementById("password-screen").style.display = "none";
+                document.getElementById("site-content").style.display = "block";
+            } else {
+                document.getElementById("error-msg").innerText = "Password errata";
+            }
+        }
+
+        document.getElementById("password-input").addEventListener("keypress", e => {
+            if (e.key === "Enter") checkPassword();
+        });
+
+        /* MENU MOBILE */
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('open');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        /* SCROLL ANIMATIONS */
+        const scrollObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(s => scrollObserver.observe(s));
+
+        /* TIMELINE */
+        const timeline = document.querySelector('.timeline');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timeline.classList.add('visible');
+                    timelineItems.forEach((item, i) =>
+                        setTimeout(() => item.classList.add('visible'), i * 300)
+                    );
+                }
+            });
+        }, { threshold: 0.2 }).observe(timeline);
+
+        /* COUNTDOWN */
+        const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
+        setInterval(() => {
+            const d = weddingDate - Date.now();
+            if (d > 0) {
+                document.getElementById("days").innerText = Math.floor(d / 86400000);
+                document.getElementById("hours").innerText = Math.floor((d / 3600000) % 24);
+                document.getElementById("minutes").innerText = Math.floor((d / 60000) % 60);
+                document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
+            }
+        }, 1000);
+
+        /* FORM CONDIZIONALE — logica riutilizzabile */
+        function bindConditionalRadio(radioName, groupId, inputId) {
+            const group = document.getElementById(groupId);
+            const input = inputId ? document.getElementById(inputId) : null;
+            document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const show = radio.value === 'si' && radio.checked;
+                    group.style.display = show ? 'flex' : 'none';
+                    if (input) {
+                        input.required = show;
+                        if (!show) input.value = '';
+                    }
+                });
+            });
+        }
+
+        bindConditionalRadio('intolleranze', 'gruppo_specifica', 'input_specifica');
+        bindConditionalRadio('bambini', 'gruppo_bambini', null);
+
+        /* ACCORDION ALGHERO */
+        function toggleAlghero() {
+            const content = document.getElementById('accordion-content');
+            const arrow = document.getElementById('accordion-arrow');
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+            content.style.maxHeight = isOpen ? '0px' : content.scrollHeight + 'px';
+            content.style.opacity = isOpen ? '0' : '1';
+            arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        /* FORM SUBMIT */
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec';
+        const form = document.getElementById('form-matrimonio');
+        const btn = document.getElementById('submit-btn');
+        const msg = document.getElementById('messaggio-conferma');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = "Invio...";
+            msg.style.display = "block";
+            msg.innerText = "Stiamo salvando la tua conferma...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(() => {
+                    msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
+                    btn.style.display = "none";
+                    form.reset();
+                })
+                .catch(err => {
+                    console.error('Errore!', err.message);
+                    msg.innerText = "Ops! C'è stato un errore. Riprova tra poco.";
+                    msg.style.color = "#a44a3f";
+                    btn.disabled = false;
+                    btn.innerText = "Riprova";
+                });
+        });
+    </script>
 </body>
 
 </html>
