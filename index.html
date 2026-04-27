@@ -826,6 +826,93 @@
             background: transparent;
             cursor: pointer;
         }
+
+        /* LOGIN ELEGANTE */
+        #password-screen {
+            position: fixed;
+            inset: 0;
+            background: #f4f4f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        .password-box {
+            max-width: 320px;
+            width: 90%;
+        }
+
+        .login-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #243024;
+            font-weight: 400;
+        }
+
+        .login-subtitle {
+            margin-top: 5px;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+            color: #c9a96e;
+            text-transform: uppercase;
+        }
+
+        .login-divider {
+            width: 30px;
+            height: 1px;
+            background: #a3b18a;
+            margin: 25px auto;
+            opacity: 0.6;
+        }
+
+        .login-text {
+            font-size: 0.8rem;
+            color: #4a5a4a;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(163, 177, 138, 0.3);
+            background: rgba(244, 244, 240, 0.6);
+            text-align: center;
+            font-family: inherit;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .password-box input:focus {
+            outline: none;
+            border-color: #c9a96e;
+            box-shadow: 0 0 6px rgba(201, 169, 110, 0.3);
+        }
+
+        .login-button {
+            padding: 12px 40px;
+            border: 1px solid #a3b18a;
+            background: transparent;
+            color: #a3b18a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .login-button:hover {
+            background: #a3b18a;
+            color: #243024;
+        }
+
+        .login-error {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #a44a3f;
+        }
     </style>
 </head>
 
@@ -833,10 +920,25 @@
 
     <div id="password-screen">
         <div class="password-box">
-            <h2>Accesso riservato</h2>
-            <input type="password" id="password-input" placeholder="Inserisci password">
-            <button onclick="checkPassword()">Entra</button>
-            <p id="error-msg"></p>
+            <div class="password-box">
+                <h1 class="login-title">Tommaso & Janira</h1>
+                <p class="login-subtitle">29 Agosto 2026 • Alghero</p>
+
+                <div class="login-divider"></div>
+
+                <p class="login-text">
+                    Questo invito è dedicato a voi.<br>
+                    Inserite la parola segreta per scoprire tutti i dettagli
+                </p>
+
+                <input type="password" id="password-input" placeholder="Parola segreta">
+
+                <button onclick="checkPassword()" class="login-button">
+                    Entra
+                </button>
+
+                <p id="error-msg" class="login-error"></p>
+            </div>
         </div>
     </div>
 
