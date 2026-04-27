@@ -749,10 +749,30 @@
             border-color: var(--sand);
             border-style: solid;
         }
-        .frame-corner--tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
-        .frame-corner--tr { top: 4px; right: 4px; border-width: 1px 1px 0 0; }
-        .frame-corner--bl { bottom: 4px; left: 4px; border-width: 0 0 1px 1px; }
-        .frame-corner--br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
+
+        .frame-corner--tl {
+            top: 4px;
+            left: 4px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .frame-corner--tr {
+            top: 4px;
+            right: 4px;
+            border-width: 1px 1px 0 0;
+        }
+
+        .frame-corner--bl {
+            bottom: 4px;
+            left: 4px;
+            border-width: 0 0 1px 1px;
+        }
+
+        .frame-corner--br {
+            bottom: 4px;
+            right: 4px;
+            border-width: 0 1px 1px 0;
+        }
 
         .footer-photo {
             display: block;
@@ -774,445 +794,501 @@
         }
 
         @media (min-width: 480px) {
-            .footer-photo { max-width: 420px; }
+            .footer-photo {
+                max-width: 420px;
+            }
         }
 
+        #password-screen {
+            position: fixed;
+            inset: 0;
+            background: #f4f4f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .password-box {
+            text-align: center;
+        }
+
+        .password-box input {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #a3b18a;
+        }
+
+        .password-box button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: 1px solid #a3b18a;
+            background: transparent;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="#" class="nav-logo">T & J</a>
-
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span><span></span><span></span>
+    <div id="password-screen">
+        <div class="password-box">
+            <h2>Accesso riservato</h2>
+            <input type="password" id="password-input" placeholder="Inserisci password">
+            <button onclick="checkPassword()">Entra</button>
+            <p id="error-msg"></p>
         </div>
-        <div class="nav-menu" id="nav-links">
+    </div>
 
-            <div class="nav-illustration">
-                <img src="./images/icons/lucy.png" alt="Illustrazione cane">
+    <div id="site-content" style="display:none;">
+        <nav>
+            <a href="#" class="nav-logo">T & J</a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-menu" id="nav-links">
+
+                <div class="nav-illustration">
+                    <img src="./images/icons/lucy.png" alt="Illustrazione cane">
+                </div>
+
+                <a href="#programma">Programma</a>
+                <a href="#arrivare">Come Arrivare</a>
+                <a href="#rsvp">RSVP</a>
+                <a href="#lista">Lista Nozze</a>
+                <a href="#scopri">Scopri Alghero</a>
             </div>
 
-            <a href="#programma">Programma</a>
-            <a href="#arrivare">Come Arrivare</a>
-            <a href="#rsvp">RSVP</a>
-            <a href="#lista">Lista Nozze</a>
-            <a href="#scopri">Scopri Alghero</a>
-        </div>
+        </nav>
 
-    </nav>
+        <div class="hero-image-container"></div>
 
-    <div class="hero-image-container"></div>
+        <header>
+            <h1>Tommaso & Janira</h1>
+            <p>29 Agosto 2026 • Alghero</p>
 
-    <header>
-        <h1>Tommaso & Janira</h1>
-        <p>29 Agosto 2026 • Alghero</p>
+            <div class="countdown">
+                <div><span id="days"></span>Giorni</div>
+                <div><span id="hours"></span>Ore</div>
+                <div><span id="minutes"></span>Minuti</div>
+                <div><span id="seconds"></span>Secondi</div>
+            </div>
+        </header>
 
-        <div class="countdown">
-            <div><span id="days"></span>Giorni</div>
-            <div><span id="hours"></span>Ore</div>
-            <div><span id="minutes"></span>Minuti</div>
-            <div><span id="seconds"></span>Secondi</div>
-        </div>
-    </header>
-
-    <section id="programma">
-        <div class="section-icon">
-            <img src="./images/icons/programma.png" alt="Programma">
-        </div>
-
-        <h2>Programma</h2>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <a href="#mappa-chiesa" class="timeline-content">
-                    <img class="schedule-icon" src="./images/icons/chiesa.png">
-                    <div class="timeline-time">16:00</div>
-                    <div class="timeline-text"><b>Ritrovo</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
-                    </div>
-                </a>
+        <section id="programma">
+            <div class="section-icon">
+                <img src="./images/icons/programma.png" alt="Programma">
             </div>
 
-            <div class="timeline-item">
-                <a href="#mappa-chiesa" class="timeline-content">
-                    <img class="schedule-icon" src="./images/icons/anelli.png">
-                    <div class="timeline-time">16:30</div>
-                    <div class="timeline-text"><b>Cerimonia</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
-                    </div>
-                </a>
+            <h2>Programma</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <a href="#mappa-chiesa" class="timeline-content">
+                        <img class="schedule-icon" src="./images/icons/chiesa.png">
+                        <div class="timeline-time">16:00</div>
+                        <div class="timeline-text"><b>Ritrovo</b>, <br> Parrocchia Cattedrale dell'Immacolata Concezione
+                        </div>
+                    </a>
+                </div>
+
+                <div class="timeline-item">
+                    <a href="#mappa-chiesa" class="timeline-content">
+                        <img class="schedule-icon" src="./images/icons/anelli.png">
+                        <div class="timeline-time">16:30</div>
+                        <div class="timeline-text"><b>Cerimonia</b>, <br> Parrocchia Cattedrale dell'Immacolata
+                            Concezione
+                        </div>
+                    </a>
+                </div>
+
+                <div class="timeline-item">
+                    <a href="#mappa-villa" class="timeline-content">
+                        <img class="schedule-icon" src="./images/icons/mosca.png">
+                        <div class="timeline-time">18:30</div>
+                        <div class="timeline-text"><b>Aperitivo e Ricevimento</b>, <br> Villa Mosca</div>
+                    </a>
+                </div>
+                <div class="timeline-item">
+                    <a href="#mappa-villa" class="timeline-content">
+                        <img class="schedule-icon" src="./images/icons/calici.png">
+                        <div class="timeline-time">22:00</div>
+                        <div class="timeline-text"><b>Festa</b>, <br> Villa Mosca</div>
+                    </a>
+                </div>
+
             </div>
+        </section>
 
-            <div class="timeline-item">
-                <a href="#mappa-villa" class="timeline-content">
-                    <img class="schedule-icon" src="./images/icons/mosca.png">
-                    <div class="timeline-time">18:30</div>
-                    <div class="timeline-text"><b>Aperitivo e Ricevimento</b>, <br> Villa Mosca</div>
-                </a>
+        <section id="arrivare">
+            <div class="section-icon">
+                <img src="./images/icons/pin.png" alt="Pin">
             </div>
-            <div class="timeline-item">
-                <a href="#mappa-villa" class="timeline-content">
-                    <img class="schedule-icon" src="./images/icons/calici.png">
-                    <div class="timeline-time">22:00</div>
-                    <div class="timeline-text"><b>Festa</b>, <br> Villa Mosca</div>
-                </a>
-            </div>
+            <h2>Come arrivare</h2>
 
-        </div>
-    </section>
-
-    <section id="arrivare">
-        <div class="section-icon">
-            <img src="./images/icons/pin.png" alt="Pin">
-        </div>
-        <h2>Come arrivare</h2>
-
-        <iframe id="mappa-chiesa"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.2028652976583!2d8.310063576552947!3d40.5591971469552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1e09622a5cf%3A0x8d3c58c73af662ab!2sParrocchia%20Cattedrale%20dell%E2%80%99Immacolata%20Concezione!5e0!3m2!1sit!2sit!4v1774877441897!5m2!1sit!2sit"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <br>
-        <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> <br> Piazza Duomo 2, 07041, Alghero</p>
-        <br>
-        <br>
-        <iframe id="mappa-villa"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <br>
-        <p><b>Villa Mosca </b>
-            <br> Via Antonio Gramsci 17, 07041, Alghero
-        </p>
-    </section>
-
-    <section id="rsvp">
-        <div class="section-icon">
-            <img src="./images/icons/rsvp.png" alt="RSVP">
-        </div>
-        <h2>RSVP</h2>
-        <p>Vi preghiamo di confermare la vostra partecipazione</p>
-        <form
-            action="https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec"
-            method="POST" class="form_matrimonio" id="form-matrimonio">
-            <div class="conferma_container">
-
-                <div class="form_group">
-                    <label>Nome e Cognome *</label>
-                    <input type="text" name="nome_cognome" required>
-                </div>
-
-                <div class="form_group">
-                    <label>Parteciperai? *</label>
-                    <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="presenza" value="si" required> Sì</label>
-                        <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
-                    </div>
-                </div>
-
-                <div class="form_group">
-                    <label>Accompagnatore/Accompagnatrice</label>
-                    <input type="text" name="piu_uno" placeholder="Nome e cognome">
-                </div>
-
-                <div class="form_group">
-                    <label>Porterai bambini/e con te? *</label>
-                    <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="bambini" value="si" required> Sì</label>
-                        <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
-                    </div>
-                </div>
-
-                <div class="form_group" id="gruppo_bambini">
-                    <label>Dettagli Bambini (Numero, nomi, età, allergie)</label>
-                    <textarea name="dettagli_bambini" rows="3" style="resize:none"
-                        placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
-                </div>
-
-                <div class="form_group">
-                    <label>Allergie, intolleranze o preferenze alimentari? *</label>
-                    <div class="intolleranze">Tue o di eventuali accompagnatori</div>
-                    <div class="radio_group">
-                        <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
-                            Sì</label>
-                        <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
-                    </div>
-                </div>
-
-                <div class="form_group" id="gruppo_specifica">
-                    <label>Specifica allergie/intolleranze *</label>
-                    <input type="text" name="specifica_intolleranze" id="input_specifica">
-                </div>
-
-                <div class="form_group">
-                    <label>Note per gli sposi</label>
-                    <textarea name="note" rows="3" style="resize:none" placeholder="Scrivici qualcosa..."></textarea>
-                </div>
-
-                <button type="submit" class="button" id="submit-btn">Invia Conferma</button>
-                <p id="messaggio-conferma"
-                    style="display:none; margin-top: 10px; color: #99af57; font-weight: bold; font-family: 'Montserrat', sans-serif;">
-                    Invio in corso... attendi un istante.
-                </p>
-            </div>
-        </form>
-    </section>
-
-    <section id="lista">
-        <div class="section-icon">
-            <img src="./images/icons/regalo.png" alt="Regalo">
-        </div>
-        <h2>Lista nozze</h2>
-        <p><i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra le
-                vette
-                delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo inizio. </i>
+            <iframe id="mappa-chiesa"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.2028652976583!2d8.310063576552947!3d40.5591971469552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1e09622a5cf%3A0x8d3c58c73af662ab!2sParrocchia%20Cattedrale%20dell%E2%80%99Immacolata%20Concezione!5e0!3m2!1sit!2sit!4v1774877441897!5m2!1sit!2sit"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             <br>
-            <br> Il vostro affetto è per noi il dono più prezioso.
+            <p><b>Parrocchia Cattedrale dell'Immacolata Concezione </b> <br> Piazza Duomo 2, 07041, Alghero</p>
             <br>
-            <br> Se vorrete accompagnarci in questa avventura speciale,
-            lasciamo qui un modo per farlo:
             <br>
-            <br> <b>IT52H0305801604100572428245</b>
-        </p>
-    </section>
+            <iframe id="mappa-villa"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.470255152096!2d8.314154376552745!3d40.553291447315736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12dcf1dc7e8f0993%3A0x7cbf6078c31a2b0c!2sVilla%20Mosca%20Charming%20House!5e0!3m2!1sit!2sit!4v1774866825291!5m2!1sit!2sit"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <br>
+            <p><b>Villa Mosca </b>
+                <br> Via Antonio Gramsci 17, 07041, Alghero
+            </p>
+        </section>
 
-    <section id="scopri" class="scopri-alghero">
-        <div class="section-icon">
-            <img class="alghero-icon" src="./images/icons/alghero.png" alt="Scopri">
-        </div>
+        <section id="rsvp">
+            <div class="section-icon">
+                <img src="./images/icons/rsvp.png" alt="RSVP">
+            </div>
+            <h2>RSVP</h2>
+            <p>Vi preghiamo di confermare la vostra partecipazione</p>
+            <form
+                action="https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec"
+                method="POST" class="form_matrimonio" id="form-matrimonio">
+                <div class="conferma_container">
 
-        <div class="accordion-header" onclick="toggleAlghero()" style="cursor: pointer;">
-            <h2>Scopri Alghero <span id="accordion-arrow"
-                    style="display: inline-block; transition: transform 0.3s ease; font-size: 1.5rem; vertical-align: middle; margin-left: 10px;">↓</span>
-            </h2>
-            <p><i>I nostri consigli per il vostro soggiorno</i></p>
-        </div>
+                    <div class="form_group">
+                        <label>Nome e Cognome *</label>
+                        <input type="text" name="nome_cognome" required>
+                    </div>
 
-        <div id="accordion-content"
-            style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; opacity: 0;">
-            <div class="guide-container" style="padding-top: 40px;">
-                <div class="guide-category">
-                    <h3>🌊 Il Mare</h3>
-                    <ul class="guide-list">
-                        <li>Il Lazzaretto & Le Bombarde</li>
-                        <li>Porto Ferro</li>
-                        <li>Noleggio gommone</li>
-                        <li>Giro delle calette</li>
-                    </ul>
+                    <div class="form_group">
+                        <label>Parteciperai? *</label>
+                        <div class="radio_group">
+                            <label class="radio_item"><input type="radio" name="presenza" value="si" required>
+                                Sì</label>
+                            <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <label>Accompagnatore/Accompagnatrice</label>
+                        <input type="text" name="piu_uno" placeholder="Nome e cognome">
+                    </div>
+
+                    <div class="form_group">
+                        <label>Porterai bambini/e con te? *</label>
+                        <div class="radio_group">
+                            <label class="radio_item"><input type="radio" name="bambini" value="si" required> Sì</label>
+                            <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
+                        </div>
+                    </div>
+
+                    <div class="form_group" id="gruppo_bambini">
+                        <label>Dettagli Bambini (Numero, nomi, età, allergie)</label>
+                        <textarea name="dettagli_bambini" rows="3" style="resize:none"
+                            placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
+                    </div>
+
+                    <div class="form_group">
+                        <label>Allergie, intolleranze o preferenze alimentari? *</label>
+                        <div class="intolleranze">Tue o di eventuali accompagnatori</div>
+                        <div class="radio_group">
+                            <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
+                                Sì</label>
+                            <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
+                        </div>
+                    </div>
+
+                    <div class="form_group" id="gruppo_specifica">
+                        <label>Specifica allergie/intolleranze *</label>
+                        <input type="text" name="specifica_intolleranze" id="input_specifica">
+                    </div>
+
+                    <div class="form_group">
+                        <label>Note per gli sposi</label>
+                        <textarea name="note" rows="3" style="resize:none"
+                            placeholder="Scrivici qualcosa..."></textarea>
+                    </div>
+
+                    <button type="submit" class="button" id="submit-btn">Invia Conferma</button>
+                    <p id="messaggio-conferma"
+                        style="display:none; margin-top: 10px; color: #99af57; font-weight: bold; font-family: 'Montserrat', sans-serif;">
+                        Invio in corso... attendi un istante.
+                    </p>
                 </div>
+            </form>
+        </section>
 
-                <div class="guide-category">
-                    <h3>🍸 Aperitivo</h3>
-                    <ul class="guide-list">
-                        <li><b>Villa Mosca</b></li>
-                        <li><b>Riservato</b></li>
-                        <li><b>Bahia</b></li>
-                        <li><b>Rifugio di Mare</b> </li>
-                        <li><b>Bar di Porto Ferro</b> </li>
-                    </ul>
-                </div>
+        <section id="lista">
+            <div class="section-icon">
+                <img src="./images/icons/regalo.png" alt="Regalo">
+            </div>
+            <h2>Lista nozze</h2>
+            <p><i>Per la nostra luna di miele abbiamo scelto il Perù, un viaggio che da tempo sogniamo di vivere: tra le
+                    vette
+                    delle Ande e la magia di Machu Picchu, porteremo con noi ogni emozione di questo nuovo inizio. </i>
+                <br>
+                <br> Il vostro affetto è per noi il dono più prezioso.
+                <br>
+                <br> Se vorrete accompagnarci in questa avventura speciale,
+                lasciamo qui un modo per farlo:
+                <br>
+                <br> <b>IT52H0305801604100572428245</b>
+            </p>
+        </section>
 
-                <div class="guide-category">
-                    <h3>🍤 Dove Mangiare</h3>
-                    <ul class="guide-list">
-                        <li><span>Focaccia dal Milese</span> <span class="price-tag"></span></li>
-                        <li><span>Ballarini </span> <span class="price-tag"></span></li>
-                        <li><span>Bella Napoli</span> <span class="price-tag"></span></li>
-                        <li><span>Musciora / Nautilus</span> <span class="price-tag"></span></li>
-                        <li><span>La Piccola Cucina</span> <span class="price-tag"></span></li>
-                    </ul>
-                </div>
+        <section id="scopri" class="scopri-alghero">
+            <div class="section-icon">
+                <img class="alghero-icon" src="./images/icons/alghero.png" alt="Scopri">
+            </div>
 
-                <div class="guide-category">
-                    <h3>🍦 Tipici & Gelato</h3>
-                    <ul class="guide-list">
-                        <li><b>Sa Mandra</b> </li>
-                        <li><b>Agriturismo Barbagia</b></li>
-                        <li><b>Golositas</b> </li>
-                        <li><b>Re Gelato</b></li>
-                    </ul>
-                </div>
+            <div class="accordion-header" onclick="toggleAlghero()" style="cursor: pointer;">
+                <h2>Scopri Alghero <span id="accordion-arrow"
+                        style="display: inline-block; transition: transform 0.3s ease; font-size: 1.5rem; vertical-align: middle; margin-left: 10px;">↓</span>
+                </h2>
+                <p><i>I nostri consigli per il vostro soggiorno</i></p>
+            </div>
 
-                <div class="guide-category">
-                    <h3>🌅 Da non perdere</h3>
-                    <ul class="guide-list">
-                        <li>Grotte di Nettuno</li>
-                        <li>Belvedere di Capo Caccia</li>
-                        <li>Torre del Porticciolo</li>
-                    </ul>
-                </div>
+            <div id="accordion-content"
+                style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; opacity: 0;">
+                <div class="guide-container" style="padding-top: 40px;">
+                    <div class="guide-category">
+                        <h3>🌊 Il Mare</h3>
+                        <ul class="guide-list">
+                            <li>Il Lazzaretto & Le Bombarde</li>
+                            <li>Porto Ferro</li>
+                            <li>Noleggio gommone</li>
+                            <li>Giro delle calette</li>
+                        </ul>
+                    </div>
 
-                <div class="guide-category">
-                    <h3>🍷 Cantine</h3>
-                    <ul class="guide-list">
-                        <li>Tenute Sella & Mosca</li>
-                        <li>Podere Guardia Grande</li>
-                        <li>Santa Maria La Palma</li>
-                    </ul>
+                    <div class="guide-category">
+                        <h3>🍸 Aperitivo</h3>
+                        <ul class="guide-list">
+                            <li><b>Villa Mosca</b></li>
+                            <li><b>Riservato</b></li>
+                            <li><b>Bahia</b></li>
+                            <li><b>Rifugio di Mare</b> </li>
+                            <li><b>Bar di Porto Ferro</b> </li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-category">
+                        <h3>🍤 Dove Mangiare</h3>
+                        <ul class="guide-list">
+                            <li><span>Focaccia dal Milese</span> <span class="price-tag"></span></li>
+                            <li><span>Ballarini </span> <span class="price-tag"></span></li>
+                            <li><span>Bella Napoli</span> <span class="price-tag"></span></li>
+                            <li><span>Musciora / Nautilus</span> <span class="price-tag"></span></li>
+                            <li><span>La Piccola Cucina</span> <span class="price-tag"></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-category">
+                        <h3>🍦 Tipici & Gelato</h3>
+                        <ul class="guide-list">
+                            <li><b>Sa Mandra</b> </li>
+                            <li><b>Agriturismo Barbagia</b></li>
+                            <li><b>Golositas</b> </li>
+                            <li><b>Re Gelato</b></li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-category">
+                        <h3>🌅 Da non perdere</h3>
+                        <ul class="guide-list">
+                            <li>Grotte di Nettuno</li>
+                            <li>Belvedere di Capo Caccia</li>
+                            <li>Torre del Porticciolo</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-category">
+                        <h3>🍷 Cantine</h3>
+                        <ul class="guide-list">
+                            <li>Tenute Sella & Mosca</li>
+                            <li>Podere Guardia Grande</li>
+                            <li>Santa Maria La Palma</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <footer>
-        <div class="footer-photo-wrapper">
-          <div class="footer-photo-frame">
-            <div class="frame-corner frame-corner--tl"></div>
-            <div class="frame-corner frame-corner--tr"></div>
-            <div class="frame-corner frame-corner--bl"></div>
-            <div class="frame-corner frame-corner--br"></div>
-            <img src="./images/paris.jpeg" alt="Tommaso Janira a Parigi" class="footer-photo">
-            <div class="footer-photo-caption">Paris, 2025</div>
-          </div>
-        </div>
-        Tommaso & Janira — 29.08.2026
-    </footer>
+        <footer>
+            <div class="footer-photo-wrapper">
+                <div class="footer-photo-frame">
+                    <div class="frame-corner frame-corner--tl"></div>
+                    <div class="frame-corner frame-corner--tr"></div>
+                    <div class="frame-corner frame-corner--bl"></div>
+                    <div class="frame-corner frame-corner--br"></div>
+                    <img src="./images/paris.jpeg" alt="Tommaso Janira a Parigi" class="footer-photo">
+                    <div class="footer-photo-caption">Paris, 2025</div>
+                </div>
+            </div>
+            Tommaso & Janira — 29.08.2026
+        </footer>
 
-    <script>
-        /* LOGICA MENU MOBILE */
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        const links = document.querySelectorAll('.nav-menu a');
+        <script>
+            /* LOGICA MENU MOBILE */
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            const links = document.querySelectorAll('.nav-menu a');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            navLinks.classList.toggle('active');
-        });
-
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('open');
-                navLinks.classList.remove('active');
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                navLinks.classList.toggle('active');
             });
-        });
 
-        /* ANIMAZIONI SCROLL */
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(s => observer.observe(s));
-
-        /* COUNTDOWN */
-        const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const d = weddingDate - now;
-            if (d > 0) {
-                document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
-                document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
-                document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
-            }
-        }, 1000);
-
-        /* TIMELINE ANIMAZIONE */
-        const timeline = document.querySelector('.timeline');
-        const timelineItems = document.querySelectorAll('.timeline-item');
-
-        const timelineObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    timeline.classList.add('visible');
-                    timelineItems.forEach((item, i) => {
-                        setTimeout(() => item.classList.add('visible'), i * 300);
-                    });
-                }
-            });
-        }, { threshold: 0.2 });
-
-        timelineObserver.observe(timeline);
-
-        /* LOGICA CONDIZIONALE INTOLLERANZE */
-        const radioIntolleranze = document.querySelectorAll('input[name="intolleranze"]');
-        const gruppoSpecifica = document.getElementById('gruppo_specifica');
-        const inputSpecifica = document.getElementById('input_specifica');
-
-        radioIntolleranze.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (radio.value === 'si' && radio.checked) {
-                    gruppoSpecifica.style.display = 'flex';
-                    inputSpecifica.required = true;
-                } else {
-                    gruppoSpecifica.style.display = 'none';
-                    inputSpecifica.required = false;
-                    inputSpecifica.value = ''; // Pulisce il campo se l'utente cambia idea
-                }
-            });
-        });
-
-        const radioBambini = document.querySelectorAll('input[name="bambini"]');
-        const gruppoBambini = document.getElementById('gruppo_bambini');
-        const inputBambini = document.getElementById('input_bambini');
-
-        radioBambini.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (radio.value === 'si' && radio.checked) {
-                    gruppoBambini.style.display = 'flex';
-                    inputBambini.required = true;
-                } else {
-                    gruppoBambini.style.display = 'none';
-                    inputBambini.required = false;
-                    inputBambini.value = ''; // Pulisce il campo se l'utente cambia idea
-                }
-            });
-        });
-
-        function toggleAlghero() {
-            const content = document.getElementById('accordion-content');
-            const arrow = document.getElementById('accordion-arrow');
-
-            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.style.opacity = "1";
-                arrow.style.transform = "rotate(180deg)";
-            } else {
-                content.style.maxHeight = "0px";
-                content.style.opacity = "0";
-                arrow.style.transform = "rotate(0deg)";
-            }
-        }
-
-
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec';
-        const form = document.getElementById('form-matrimonio');
-        const btn = document.getElementById('submit-btn');
-        const msg = document.getElementById('messaggio-conferma');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault(); // Impedisce il ricaricamento della pagina
-
-            // Feedback visivo per l'utente
-            btn.disabled = true;
-            btn.innerText = "Invio...";
-            msg.style.display = "block";
-            msg.innerText = "Stiamo salvando la tua conferma...";
-
-            // Invio dei dati
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new FormData(form)
-            })
-                .then(response => {
-                    msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
-                    btn.style.display = "none"; // Nasconde il tasto dopo l'invio
-                    form.reset(); // Svuota il form
-                })
-                .catch(error => {
-                    console.error('Errore!', error.message);
-                    msg.innerText = "Ops! C'è stato un errore. Riprova tra poco.";
-                    msg.style.color = "#a44a3f"; // rosso mattone elegante
-                    btn.disabled = false;
-                    btn.innerText = "Riprova";
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('open');
+                    navLinks.classList.remove('active');
                 });
-        });
+            });
 
-    </script>
+            /* ANIMAZIONI SCROLL */
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
 
+            sections.forEach(s => observer.observe(s));
+
+            /* COUNTDOWN */
+            const weddingDate = new Date("August 29, 2026 16:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const d = weddingDate - now;
+                if (d > 0) {
+                    document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+                    document.getElementById("hours").innerText = Math.floor((d / (1000 * 60 * 60)) % 24);
+                    document.getElementById("minutes").innerText = Math.floor((d / (1000 * 60)) % 60);
+                    document.getElementById("seconds").innerText = Math.floor((d / 1000) % 60);
+                }
+            }, 1000);
+
+            /* TIMELINE ANIMAZIONE */
+            const timeline = document.querySelector('.timeline');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            const timelineObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        timeline.classList.add('visible');
+                        timelineItems.forEach((item, i) => {
+                            setTimeout(() => item.classList.add('visible'), i * 300);
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            timelineObserver.observe(timeline);
+
+            /* LOGICA CONDIZIONALE INTOLLERANZE */
+            const radioIntolleranze = document.querySelectorAll('input[name="intolleranze"]');
+            const gruppoSpecifica = document.getElementById('gruppo_specifica');
+            const inputSpecifica = document.getElementById('input_specifica');
+
+            radioIntolleranze.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'si' && radio.checked) {
+                        gruppoSpecifica.style.display = 'flex';
+                        inputSpecifica.required = true;
+                    } else {
+                        gruppoSpecifica.style.display = 'none';
+                        inputSpecifica.required = false;
+                        inputSpecifica.value = ''; // Pulisce il campo se l'utente cambia idea
+                    }
+                });
+            });
+
+            const radioBambini = document.querySelectorAll('input[name="bambini"]');
+            const gruppoBambini = document.getElementById('gruppo_bambini');
+            const inputBambini = document.getElementById('input_bambini');
+
+            radioBambini.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'si' && radio.checked) {
+                        gruppoBambini.style.display = 'flex';
+                        inputBambini.required = true;
+                    } else {
+                        gruppoBambini.style.display = 'none';
+                        inputBambini.required = false;
+                        inputBambini.value = ''; // Pulisce il campo se l'utente cambia idea
+                    }
+                });
+            });
+
+            function toggleAlghero() {
+                const content = document.getElementById('accordion-content');
+                const arrow = document.getElementById('accordion-arrow');
+
+                if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.opacity = "1";
+                    arrow.style.transform = "rotate(180deg)";
+                } else {
+                    content.style.maxHeight = "0px";
+                    content.style.opacity = "0";
+                    arrow.style.transform = "rotate(0deg)";
+                }
+            }
+
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec';
+            const form = document.getElementById('form-matrimonio');
+            const btn = document.getElementById('submit-btn');
+            const msg = document.getElementById('messaggio-conferma');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault(); // Impedisce il ricaricamento della pagina
+
+                // Feedback visivo per l'utente
+                btn.disabled = true;
+                btn.innerText = "Invio...";
+                msg.style.display = "block";
+                msg.innerText = "Stiamo salvando la tua conferma...";
+
+                // Invio dei dati
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                    .then(response => {
+                        msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
+                        btn.style.display = "none"; // Nasconde il tasto dopo l'invio
+                        form.reset(); // Svuota il form
+                    })
+                    .catch(error => {
+                        console.error('Errore!', error.message);
+                        msg.innerText = "Ops! C'è stato un errore. Riprova tra poco.";
+                        msg.style.color = "#a44a3f"; // rosso mattone elegante
+                        btn.disabled = false;
+                        btn.innerText = "Riprova";
+                    });
+            });
+
+            const PASSWORD = "LUCY"; // <-- cambia qui
+
+            function checkPassword() {
+                const input = document.getElementById("password-input").value;
+                const error = document.getElementById("error-msg");
+
+                if (input === PASSWORD) {
+                    document.getElementById("password-screen").style.display = "none";
+                    document.getElementById("site-content").style.display = "block";
+                } else {
+                    error.innerText = "Password errata";
+                }
+            }
+
+        </script>
+    </div>
 </body>
 
 </html>
