@@ -959,8 +959,8 @@
                         </div>
                     </div>
                     <div class="form_group" id="gruppo_bambini">
-                        <label>Dettagli Bambini (Numero, nomi, età, allergie)</label>
-                        <textarea name="dettagli_bambini" rows="3" style="resize:none"
+                        <label>Dettagli Bambini (Numero, nomi, età, allergie) *</label>
+                        <textarea name="dettagli_bambini" id="input_bambini" rows="3" style="resize:none"
                             placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
                     </div>
                     <div class="form_group">
@@ -1179,7 +1179,7 @@
         }
 
         bindConditionalRadio('intolleranze', 'gruppo_specifica', 'input_specifica');
-        bindConditionalRadio('bambini', 'gruppo_bambini', null);
+        bindConditionalRadio('bambini', 'gruppo_bambini', 'input_bambini');
 
         /* ACCORDION ALGHERO */
         function toggleAlghero() {
