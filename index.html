@@ -1388,7 +1388,12 @@
                     error.innerText = "Password errata";
                 }
             }
-
+            document.getElementById("password-input")
+                .addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        checkPassword();
+                    }
+                });
         </script>
     </div>
 </body>
