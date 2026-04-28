@@ -11,14 +11,12 @@
         rel="stylesheet">
 
     <style>
-        /* RESET */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* PALETTE */
         :root {
             --sand: #c8b89a;
             --sand-light: #e8dfd0;
@@ -31,7 +29,6 @@
             --gold-text: #dab12ee3;
         }
 
-        /* BODY */
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text);
@@ -41,7 +38,6 @@
             font-weight: 300;
         }
 
-        /* Sfondo watermark */
         body::after {
             content: "";
             position: fixed;
@@ -52,7 +48,6 @@
             z-index: -1;
         }
 
-        /* Velo sopra sfondo */
         body::before {
             content: "";
             position: fixed;
@@ -61,7 +56,6 @@
             z-index: -1;
         }
 
-        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -169,7 +163,6 @@
             transform: translateY(0);
         }
 
-        /* HERO */
         .hero-image-container {
             position: relative;
             width: 100%;
@@ -189,7 +182,6 @@
             background: linear-gradient(to bottom, transparent, var(--bg));
         }
 
-        /* HEADER */
         header {
             text-align: center;
             padding: 40px 20px 80px;
@@ -211,7 +203,6 @@
             text-transform: uppercase;
         }
 
-        /* COUNTDOWN */
         .countdown {
             margin-top: 50px;
             display: flex;
@@ -236,7 +227,6 @@
             margin-bottom: 8px;
         }
 
-        /* SEZIONI */
         section {
             padding: 80px 25px;
             max-width: 800px;
@@ -306,7 +296,6 @@
             opacity: 0.6;
         }
 
-        /* BUTTON */
         .button {
             margin-top: 30px;
             padding: 15px 50px;
@@ -334,7 +323,6 @@
             filter: sepia(0.2) contrast(0.9);
         }
 
-        /* FORM RSVP */
         .form_matrimonio {
             margin-top: 30px;
             text-align: left;
@@ -414,12 +402,35 @@
             display: none;
         }
 
+        /* Blocco resto form con animazione */
+        #resto-form {
+            display: none;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        #resto-form.aperto {
+            display: flex;
+            animation: slideDown 0.5s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .intolleranze {
             font-size: 12px;
             text-decoration: underline;
         }
 
-        /* TIMELINE */
         .timeline {
             position: relative;
             margin-top: 60px;
@@ -443,7 +454,6 @@
             height: 100%;
         }
 
-        /* Shimmer overlay */
         .timeline::after {
             content: "";
             position: absolute;
@@ -538,7 +548,6 @@
             color: var(--text);
         }
 
-        /* GUIDA ALGHERO */
         .guide-container {
             text-align: left;
             display: grid;
@@ -576,7 +585,6 @@
             opacity: 0.4;
         }
 
-        /* FOOTER */
         footer {
             margin-top: 100px;
             padding: 60px 20px 40px;
@@ -655,7 +663,6 @@
             text-align: center;
         }
 
-        /* LOGIN */
         #password-screen {
             position: fixed;
             inset: 0;
@@ -742,7 +749,6 @@
             color: #a44a3f;
         }
 
-        /* MEDIA QUERIES */
         @media (max-width: 768px) {
             body::after {
                 background-size: contain;
@@ -935,52 +941,68 @@
                 action="https://script.google.com/macros/s/AKfycbxSyER9lulmSQsgp9Wt0lKdw7jKi4yWdJoty2G6u2_qJFZEi1LGMWfOkVzRq6OjmxKhEA/exec"
                 method="POST" class="form_matrimonio" id="form-matrimonio">
                 <div class="conferma_container">
+
+                    <!-- Campo sempre visibile -->
                     <div class="form_group">
                         <label>Nome e Cognome *</label>
                         <input type="text" name="nome_cognome" required>
                     </div>
+
+                    <!-- Domanda presenza — sempre visibile -->
                     <div class="form_group">
                         <label>Parteciperai? *</label>
                         <div class="radio_group">
-                            <label class="radio_item"><input type="radio" name="presenza" value="si" required>
-                                Sì</label>
-                            <label class="radio_item"><input type="radio" name="presenza" value="no"> No</label>
+                            <label class="radio_item">
+                                <input type="radio" name="presenza" value="si" required id="presenza-si"> Sì
+                            </label>
+                            <label class="radio_item">
+                                <input type="radio" name="presenza" value="no" id="presenza-no"> No
+                            </label>
                         </div>
                     </div>
-                    <div class="form_group">
-                        <label>Accompagnatore/Accompagnatrice</label>
-                        <input type="text" name="piu_uno" placeholder="Nome e cognome">
-                    </div>
-                    <div class="form_group">
-                        <label>Porterai bambini/e con te? *</label>
-                        <div class="radio_group">
-                            <label class="radio_item"><input type="radio" name="bambini" value="si" required> Sì</label>
-                            <label class="radio_item"><input type="radio" name="bambini" value="no"> No</label>
+
+                    <!-- Resto del form: compare solo se si risponde Sì -->
+                    <div id="resto-form">
+                        <div class="form_group">
+                            <label>Accompagnatore/Accompagnatrice</label>
+                            <input type="text" name="piu_uno" placeholder="Nome e cognome">
+                        </div>
+                        <div class="form_group">
+                            <label>Porterai bambini/e con te? *</label>
+                            <div class="radio_group">
+                                <label class="radio_item"><input type="radio" name="bambini" value="si" id="bambini-si">
+                                    Sì</label>
+                                <label class="radio_item"><input type="radio" name="bambini" value="no" id="bambini-no">
+                                    No</label>
+                            </div>
+                        </div>
+                        <div class="form_group" id="gruppo_bambini">
+                            <label>Dettagli Bambini (Numero, nomi, età, allergie) *</label>
+                            <textarea name="dettagli_bambini" id="input_bambini" rows="3" style="resize:none"
+                                placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
+                        </div>
+                        <div class="form_group">
+                            <label>Allergie, intolleranze o preferenze alimentari? *</label>
+                            <div class="intolleranze">Tue o di eventuali accompagnatori</div>
+                            <div class="radio_group">
+                                <label class="radio_item"><input type="radio" name="intolleranze" value="si"
+                                        id="intolleranze-si"> Sì</label>
+                                <label class="radio_item"><input type="radio" name="intolleranze" value="no"
+                                        id="intolleranze-no"> No</label>
+                            </div>
+                        </div>
+                        <div class="form_group" id="gruppo_specifica">
+                            <label>Specifica allergie/intolleranze *</label>
+                            <input type="text" name="specifica_intolleranze" id="input_specifica">
+                        </div>
+                        <div class="form_group">
+                            <label>Note per gli sposi</label>
+                            <textarea name="note" rows="3" style="resize:none"
+                                placeholder="Scrivici qualcosa..."></textarea>
                         </div>
                     </div>
-                    <div class="form_group" id="gruppo_bambini">
-                        <label>Dettagli Bambini (Numero, nomi, età, allergie) *</label>
-                        <textarea name="dettagli_bambini" id="input_bambini" rows="3" style="resize:none"
-                            placeholder="Es: 2 bambini: Anna (4 anni), Marco (6 anni)"></textarea>
-                    </div>
-                    <div class="form_group">
-                        <label>Allergie, intolleranze o preferenze alimentari? *</label>
-                        <div class="intolleranze">Tue o di eventuali accompagnatori</div>
-                        <div class="radio_group">
-                            <label class="radio_item"><input type="radio" name="intolleranze" value="si" required>
-                                Sì</label>
-                            <label class="radio_item"><input type="radio" name="intolleranze" value="no"> No</label>
-                        </div>
-                    </div>
-                    <div class="form_group" id="gruppo_specifica">
-                        <label>Specifica allergie/intolleranze *</label>
-                        <input type="text" name="specifica_intolleranze" id="input_specifica">
-                    </div>
-                    <div class="form_group">
-                        <label>Note per gli sposi</label>
-                        <textarea name="note" rows="3" style="resize:none"
-                            placeholder="Scrivici qualcosa..."></textarea>
-                    </div>
+                    <!-- /resto-form -->
+
                     <button type="submit" class="button" id="submit-btn">Invia Conferma</button>
                     <p id="messaggio-conferma"
                         style="display:none; margin-top:10px; color:#99af57; font-weight:bold; font-family:'Montserrat',sans-serif;">
@@ -1007,7 +1029,7 @@
                 <b>IT52H0305801604100572428245</b>
                 <br>
                 <span style="font-size: 0.75rem">
-                    <i> IBAN intestato agli sposi, Janira Corrias e Tommaso Maggi </i>
+                    <i>IBAN intestato agli sposi, Janira Corrias e Tommaso Maggi</i>
                 </span>
             </p>
         </section>
@@ -1166,6 +1188,60 @@
             }
         }, 1000);
 
+        /* -------------------------------------------------------
+           PRESENZA — mostra/nasconde il resto del form
+        ------------------------------------------------------- */
+        const restoForm = document.getElementById('resto-form');
+
+        // Tutti i campi required interni al blocco resto-form
+        const campiRequiredInterni = [
+            { name: 'bambini' },
+            { name: 'intolleranze' }
+        ];
+
+        function abilitaRestoForm(abilita) {
+            // Radio interni: bambini e intolleranze
+            campiRequiredInterni.forEach(({ name }) => {
+                document.querySelectorAll(`#resto-form input[name="${name}"]`).forEach(r => {
+                    r.required = abilita;
+                });
+            });
+        }
+
+        function mostraRestoForm() {
+            restoForm.classList.add('aperto');
+            abilitaRestoForm(true);
+        }
+
+        function nascondiRestoForm() {
+            restoForm.classList.remove('aperto');
+            abilitaRestoForm(false);
+
+            // Resetta e chiudi i sotto-gruppi condizionali
+            document.getElementById('gruppo_specifica').style.display = 'none';
+            document.getElementById('gruppo_bambini').style.display = 'none';
+            const inputSpecifica = document.getElementById('input_specifica');
+            const inputBambini = document.getElementById('input_bambini');
+            inputSpecifica.required = false;
+            inputSpecifica.value = '';
+            inputBambini.required = false;
+            inputBambini.value = '';
+
+            // Reset radio interni
+            restoForm.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            restoForm.querySelectorAll('input[type="text"], textarea').forEach(i => i.value = '');
+        }
+
+        document.querySelectorAll('input[name="presenza"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (document.getElementById('presenza-si').checked) {
+                    mostraRestoForm();
+                } else {
+                    nascondiRestoForm();
+                }
+            });
+        });
+
         /* FORM CONDIZIONALE — logica riutilizzabile */
         function bindConditionalRadio(radioName, groupId, inputId) {
             const group = document.getElementById(groupId);
@@ -1213,6 +1289,8 @@
                     msg.innerText = "Grazie! La tua conferma è stata registrata con successo. ✨";
                     btn.style.display = "none";
                     form.reset();
+                    // Nascondi il blocco resto-form dopo il reset
+                    nascondiRestoForm();
                 })
                 .catch(err => {
                     console.error('Errore!', err.message);
